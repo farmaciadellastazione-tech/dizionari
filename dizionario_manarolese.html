@@ -104,7 +104,7 @@
   <div class="search-wrap">
     <input type="text" id="search" placeholder="Cerca voce o traduzione..." oninput="filtra()">
   </div>
-  <span class="count" id="count">273 voci</span>
+  <span class="count" id="count">352 voci</span>
   <button class="btn btn-sea" onclick="speakAll()">🔊 Leggi tutto</button>
   <button id="btn-gh-save" class="btn btn-blue" onclick="salvaSuGitHub()" style="background:#24292f" disabled="">⏳ Salvataggio...</button>
   <button class="btn btn-blue" onclick="salvaFile()" title="Backup locale">💾 Scarica copia</button>
@@ -112,7 +112,7 @@
   <button class="btn btn-orange" onclick="resetAll()" id="btn-reset" style="display:none">↩ Ripristina tutto</button>
 </div>
 
-<div class="alpha-nav" id="alphaNav"><a class="alpha-btn" href="#letter-A">A</a><a class="alpha-btn" href="#letter-N">N</a><a class="alpha-btn" href="#letter-S">S</a><a class="alpha-btn" href="#letter-T">T</a><a class="alpha-btn" href="#letter-V">V</a><a class="alpha-btn" href="#letter-Z">Z</a><a class="alpha-btn" href="#letter-À">À</a><a class="alpha-btn" href="#letter-Ù">Ù</a><a class="alpha-btn" href="#letter-Ú">Ú</a><a class="alpha-btn" href="#letter-Ü">Ü</a></div>
+<div class="alpha-nav" id="alphaNav"><a class="alpha-btn" href="#letter-A">A</a><a class="alpha-btn" href="#letter-N">N</a><a class="alpha-btn" href="#letter-S">S</a><a class="alpha-btn" href="#letter-T">T</a><a class="alpha-btn" href="#letter-U">U</a><a class="alpha-btn" href="#letter-V">V</a><a class="alpha-btn" href="#letter-Z">Z</a><a class="alpha-btn" href="#letter-À">À</a><a class="alpha-btn" href="#letter-Ù">Ù</a><a class="alpha-btn" href="#letter-Ú">Ú</a><a class="alpha-btn" href="#letter-Ü">Ü</a></div>
 <main id="main">
     <div class="stats-bar">
       <div class="stat"><span class="stat-val" id="stat-total">352</span><span class="stat-lbl">Voci totali</span></div>
@@ -177,7 +177,7 @@
         </div>
     </div>
     <div class="letter-section" id="letter-N">
-      <div class="letter-heading">N <span>10</span></div>
+      <div class="letter-heading">N <span>14</span></div>
       
         <div class="word-card  " data-idx="2">
           <div class="field-wrap">
@@ -237,6 +237,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(4)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="5">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="nànsi" title="Clicca per modificare" onchange="onEdit(5,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="piuttosto" title="Clicca per modificare" onchange="onEdit(5,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="nànsi" title="Correzione fonetica per la lettura" onchange="onEdit(5,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(5)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="6">
@@ -299,6 +319,26 @@
             <button class="btn-del" onclick="deleteEntry(8)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="9">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="nàzièlu" title="Clicca per modificare" onchange="onEdit(9,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="pesce" title="Clicca per modificare" onchange="onEdit(9,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="nàzièlu" title="Correzione fonetica per la lettura" onchange="onEdit(9,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(9)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="10">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -319,6 +359,26 @@
             <button class="btn-del" onclick="deleteEntry(10)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="11">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="nècu" title="Clicca per modificare" onchange="onEdit(11,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="umore" title="Clicca per modificare" onchange="onEdit(11,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="nècu" title="Correzione fonetica per la lettura" onchange="onEdit(11,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(11)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="12">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -337,6 +397,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(12)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="13">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="nédu" title="Clicca per modificare" onchange="onEdit(13,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="nuoto" title="Clicca per modificare" onchange="onEdit(13,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="nédu" title="Correzione fonetica per la lettura" onchange="onEdit(13,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(13)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="14">
@@ -381,7 +461,7 @@
         </div>
     </div>
     <div class="letter-section" id="letter-S">
-      <div class="letter-heading">S <span>17</span></div>
+      <div class="letter-heading">S <span>26</span></div>
       
         <div class="word-card  " data-idx="16">
           <div class="field-wrap">
@@ -503,6 +583,26 @@
             <button class="btn-del" onclick="deleteEntry(21)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="22">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="scié" title="Clicca per modificare" onchange="onEdit(22,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="cielo" title="Clicca per modificare" onchange="onEdit(22,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="scié" title="Correzione fonetica per la lettura" onchange="onEdit(22,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(22)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="23">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -523,6 +623,46 @@
             <button class="btn-del" onclick="deleteEntry(23)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="24">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="sciétu" title="Clicca per modificare" onchange="onEdit(24,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="schietto, puro, onesto" title="Clicca per modificare" onchange="onEdit(24,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="sciétu" title="Correzione fonetica per la lettura" onchange="onEdit(24,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(24)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="25">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="sciòpu" title="Clicca per modificare" onchange="onEdit(25,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="fucile" title="Clicca per modificare" onchange="onEdit(25,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="sciòpu" title="Correzione fonetica per la lettura" onchange="onEdit(25,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(25)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="26">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -541,6 +681,66 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(26)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="27">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="scòpu" title="Clicca per modificare" onchange="onEdit(27,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="scopo, fine" title="Clicca per modificare" onchange="onEdit(27,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="scòpu" title="Correzione fonetica per la lettura" onchange="onEdit(27,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(27)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="28">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="silënsciu" title="Clicca per modificare" onchange="onEdit(28,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="silenzioso" title="Clicca per modificare" onchange="onEdit(28,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="silënsciu" title="Correzione fonetica per la lettura" onchange="onEdit(28,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(28)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="29">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="sinciéu" title="Clicca per modificare" onchange="onEdit(29,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="sincero" title="Clicca per modificare" onchange="onEdit(29,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="sinciéu" title="Correzione fonetica per la lettura" onchange="onEdit(29,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(29)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="30">
@@ -663,6 +863,46 @@
             <button class="btn-del" onclick="deleteEntry(35)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="36">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="sòcu" title="Clicca per modificare" onchange="onEdit(36,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="ceppo, ciocco" title="Clicca per modificare" onchange="onEdit(36,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="sòcu" title="Correzione fonetica per la lettura" onchange="onEdit(36,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(36)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="37">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="sòdi" title="Clicca per modificare" onchange="onEdit(37,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="soldi" title="Clicca per modificare" onchange="onEdit(37,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="sòdi" title="Correzione fonetica per la lettura" onchange="onEdit(37,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(37)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="38">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -703,6 +943,26 @@
             <button class="btn-del" onclick="deleteEntry(39)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="40">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="sòlitu" title="Clicca per modificare" onchange="onEdit(40,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="insolito" title="Clicca per modificare" onchange="onEdit(40,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="sòlitu" title="Correzione fonetica per la lettura" onchange="onEdit(40,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(40)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="41">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -725,8 +985,68 @@
         </div>
     </div>
     <div class="letter-section" id="letter-T">
-      <div class="letter-heading">T <span>17</span></div>
+      <div class="letter-heading">T <span>28</span></div>
       
+        <div class="word-card  " data-idx="42">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tichiu" title="Clicca per modificare" onchange="onEdit(42,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="tic nervoso" title="Clicca per modificare" onchange="onEdit(42,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tichiu" title="Correzione fonetica per la lettura" onchange="onEdit(42,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(42)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="43">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tifu" title="Clicca per modificare" onchange="onEdit(43,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="tifo" title="Clicca per modificare" onchange="onEdit(43,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tifu" title="Correzione fonetica per la lettura" onchange="onEdit(43,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(43)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="44">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tigiu" title="Clicca per modificare" onchange="onEdit(44,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="tiglio" title="Clicca per modificare" onchange="onEdit(44,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tigiu" title="Correzione fonetica per la lettura" onchange="onEdit(44,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(44)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="45">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -765,6 +1085,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(46)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="47">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="timuniés" title="Clicca per modificare" onchange="onEdit(47,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="timoniere" title="Clicca per modificare" onchange="onEdit(47,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="timuniés" title="Correzione fonetica per la lettura" onchange="onEdit(47,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(47)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="48">
@@ -845,6 +1185,46 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(51)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="52">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tiénèu" title="Clicca per modificare" onchange="onEdit(52,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="morbido" title="Clicca per modificare" onchange="onEdit(52,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tiénèu" title="Correzione fonetica per la lettura" onchange="onEdit(52,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(52)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="53">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tiévédu" title="Clicca per modificare" onchange="onEdit(53,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="tiepido" title="Clicca per modificare" onchange="onEdit(53,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tiévédu" title="Correzione fonetica per la lettura" onchange="onEdit(53,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(53)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="54">
@@ -1027,6 +1407,46 @@
             <button class="btn-del" onclick="deleteEntry(62)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="63">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tìmùn" title="Clicca per modificare" onchange="onEdit(63,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="timone" title="Clicca per modificare" onchange="onEdit(63,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tìmùn" title="Correzione fonetica per la lettura" onchange="onEdit(63,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(63)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="64">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tòcu" title="Clicca per modificare" onchange="onEdit(64,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="pezzo" title="Clicca per modificare" onchange="onEdit(64,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tòcu" title="Correzione fonetica per la lettura" onchange="onEdit(64,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(64)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="65">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1045,6 +1465,66 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(65)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="66">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tòru" title="Clicca per modificare" onchange="onEdit(66,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="toro" title="Clicca per modificare" onchange="onEdit(66,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tòru" title="Correzione fonetica per la lettura" onchange="onEdit(66,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(66)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="67">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tòstu" title="Clicca per modificare" onchange="onEdit(67,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="duro di comprendonio" title="Clicca per modificare" onchange="onEdit(67,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tòstu" title="Correzione fonetica per la lettura" onchange="onEdit(67,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(67)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="68">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="tòségu" title="Clicca per modificare" onchange="onEdit(68,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="tossico, veleno" title="Clicca per modificare" onchange="onEdit(68,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="tòségu" title="Correzione fonetica per la lettura" onchange="onEdit(68,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(68)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="69">
@@ -1068,9 +1548,73 @@
           </div>
         </div>
     </div>
-    <div class="letter-section" id="letter-V">
-      <div class="letter-heading">V <span>27</span></div>
+    <div class="letter-section" id="letter-U">
+      <div class="letter-heading">U <span>2</span></div>
       
+        <div class="word-card  " data-idx="70">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="umilé" title="Clicca per modificare" onchange="onEdit(70,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="umile, modesto" title="Clicca per modificare" onchange="onEdit(70,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="umilé" title="Correzione fonetica per la lettura" onchange="onEdit(70,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(70)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="71">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="unéstà" title="Clicca per modificare" onchange="onEdit(71,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="onestà, sincerità" title="Clicca per modificare" onchange="onEdit(71,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="unéstà" title="Correzione fonetica per la lettura" onchange="onEdit(71,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(71)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+    </div>
+    <div class="letter-section" id="letter-V">
+      <div class="letter-heading">V <span>42</span></div>
+      
+        <div class="word-card  " data-idx="72">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vigné" title="Clicca per modificare" onchange="onEdit(72,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vigneti" title="Clicca per modificare" onchange="onEdit(72,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vigné" title="Correzione fonetica per la lettura" onchange="onEdit(72,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(72)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="73">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1111,6 +1655,26 @@
             <button class="btn-del" onclick="deleteEntry(74)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="75">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vinsé" title="Clicca per modificare" onchange="onEdit(75,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vincere" title="Clicca per modificare" onchange="onEdit(75,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vinsé" title="Correzione fonetica per la lettura" onchange="onEdit(75,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(75)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="76">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1131,6 +1695,46 @@
             <button class="btn-del" onclick="deleteEntry(76)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="77">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vinti" title="Clicca per modificare" onchange="onEdit(77,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="venti" title="Clicca per modificare" onchange="onEdit(77,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vinti" title="Correzione fonetica per la lettura" onchange="onEdit(77,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(77)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="78">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vinëtu" title="Clicca per modificare" onchange="onEdit(78,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vino leggero" title="Clicca per modificare" onchange="onEdit(78,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vinëtu" title="Correzione fonetica per la lettura" onchange="onEdit(78,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(78)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="79">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1149,6 +1753,46 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(79)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="80">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="virtü" title="Clicca per modificare" onchange="onEdit(80,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="virtù" title="Clicca per modificare" onchange="onEdit(80,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="virtü" title="Correzione fonetica per la lettura" onchange="onEdit(80,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(80)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="81">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="visciu" title="Clicca per modificare" onchange="onEdit(81,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vizio" title="Clicca per modificare" onchange="onEdit(81,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="visciu" title="Correzione fonetica per la lettura" onchange="onEdit(81,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(81)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="82">
@@ -1211,6 +1855,26 @@
             <button class="btn-del" onclick="deleteEntry(84)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="85">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="viérdùn" title="Clicca per modificare" onchange="onEdit(85,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="verdone, tipo di uccello" title="Clicca per modificare" onchange="onEdit(85,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="viérdùn" title="Correzione fonetica per la lettura" onchange="onEdit(85,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(85)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="86">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1229,6 +1893,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(86)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="87">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="viùlin" title="Clicca per modificare" onchange="onEdit(87,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="violino" title="Clicca per modificare" onchange="onEdit(87,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="viùlin" title="Correzione fonetica per la lettura" onchange="onEdit(87,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(87)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="88">
@@ -1251,6 +1935,26 @@
             <button class="btn-del" onclick="deleteEntry(88)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="89">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vree" title="Clicca per modificare" onchange="onEdit(89,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="volere" title="Clicca per modificare" onchange="onEdit(89,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vree" title="Correzione fonetica per la lettura" onchange="onEdit(89,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(89)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="90">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1269,6 +1973,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(90)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="91">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vuluntà" title="Clicca per modificare" onchange="onEdit(91,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="volontà" title="Clicca per modificare" onchange="onEdit(91,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vuluntà" title="Correzione fonetica per la lettura" onchange="onEdit(91,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(91)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="92">
@@ -1329,6 +2053,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(94)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="95">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vìn" title="Clicca per modificare" onchange="onEdit(95,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vino" title="Clicca per modificare" onchange="onEdit(95,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vìn" title="Correzione fonetica per la lettura" onchange="onEdit(95,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(95)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="96">
@@ -1411,6 +2155,66 @@
             <button class="btn-del" onclick="deleteEntry(99)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="100">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vìtèlu" title="Clicca per modificare" onchange="onEdit(100,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vitello" title="Clicca per modificare" onchange="onEdit(100,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vìtèlu" title="Correzione fonetica per la lettura" onchange="onEdit(100,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(100)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="101">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vìvé" title="Clicca per modificare" onchange="onEdit(101,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vivere" title="Clicca per modificare" onchange="onEdit(101,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vìvé" title="Correzione fonetica per la lettura" onchange="onEdit(101,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(101)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="102">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vìédru" title="Clicca per modificare" onchange="onEdit(102,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="vetro" title="Clicca per modificare" onchange="onEdit(102,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vìédru" title="Correzione fonetica per la lettura" onchange="onEdit(102,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(102)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="103">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -1429,6 +2233,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(103)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="104">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="vìérdu" title="Clicca per modificare" onchange="onEdit(104,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="verde" title="Clicca per modificare" onchange="onEdit(104,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="vìérdu" title="Correzione fonetica per la lettura" onchange="onEdit(104,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(104)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="105">
@@ -1613,7 +2437,7 @@
         </div>
     </div>
     <div class="letter-section" id="letter-Z">
-      <div class="letter-heading">Z <span>172</span></div>
+      <div class="letter-heading">Z <span>205</span></div>
       
         <div class="word-card  " data-idx="114">
           <div class="field-wrap">
@@ -1753,6 +2577,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(120)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="121">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zbràgiu" title="Clicca per modificare" onchange="onEdit(121,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="urlo, rimprovero" title="Clicca per modificare" onchange="onEdit(121,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zbràgiu" title="Correzione fonetica per la lettura" onchange="onEdit(121,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(121)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="122">
@@ -1975,6 +2819,26 @@
             <button class="btn-del" onclick="deleteEntry(132)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="133">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zbìru" title="Clicca per modificare" onchange="onEdit(133,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="poliziotto" title="Clicca per modificare" onchange="onEdit(133,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zbìru" title="Correzione fonetica per la lettura" onchange="onEdit(133,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(133)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="134">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -2195,6 +3059,46 @@
             <button class="btn-del" onclick="deleteEntry(144)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="145">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zeu" title="Clicca per modificare" onchange="onEdit(145,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="zero" title="Clicca per modificare" onchange="onEdit(145,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zeu" title="Correzione fonetica per la lettura" onchange="onEdit(145,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(145)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="146">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zeùn" title="Clicca per modificare" onchange="onEdit(146,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="gelone" title="Clicca per modificare" onchange="onEdit(146,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zeùn" title="Correzione fonetica per la lettura" onchange="onEdit(146,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(146)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="147">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -2293,6 +3197,46 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(151)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="152">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zghigiuëntu" title="Clicca per modificare" onchange="onEdit(152,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="scivoloso" title="Clicca per modificare" onchange="onEdit(152,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zghigiuëntu" title="Correzione fonetica per la lettura" onchange="onEdit(152,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(152)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="153">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zghigiùn" title="Clicca per modificare" onchange="onEdit(153,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="boletus bovinus, fungo deliquescente" title="Clicca per modificare" onchange="onEdit(153,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zghigiùn" title="Correzione fonetica per la lettura" onchange="onEdit(153,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(153)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="154">
@@ -2433,6 +3377,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(160)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="161">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zghìu" title="Clicca per modificare" onchange="onEdit(161,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="ghiro, dormiglione" title="Clicca per modificare" onchange="onEdit(161,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zghìu" title="Correzione fonetica per la lettura" onchange="onEdit(161,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(161)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="162">
@@ -2615,6 +3579,26 @@
             <button class="btn-del" onclick="deleteEntry(170)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="171">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zgrüzu" title="Clicca per modificare" onchange="onEdit(171,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="re" title="Clicca per modificare" onchange="onEdit(171,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zgrüzu" title="Correzione fonetica per la lettura" onchange="onEdit(171,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(171)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="172">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -2633,6 +3617,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(172)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="173">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zgubùn" title="Clicca per modificare" onchange="onEdit(173,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="sgobbone" title="Clicca per modificare" onchange="onEdit(173,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zgubùn" title="Correzione fonetica per la lettura" onchange="onEdit(173,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(173)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="174">
@@ -3095,6 +4099,26 @@
             <button class="btn-del" onclick="deleteEntry(196)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="197">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zgüssà" title="Clicca per modificare" onchange="onEdit(197,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="sci" title="Clicca per modificare" onchange="onEdit(197,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zgüssà" title="Correzione fonetica per la lettura" onchange="onEdit(197,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(197)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="198">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -3355,6 +4379,46 @@
             <button class="btn-del" onclick="deleteEntry(210)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="211">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zinbèlu" title="Clicca per modificare" onchange="onEdit(211,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="bello" title="Clicca per modificare" onchange="onEdit(211,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zinbèlu" title="Correzione fonetica per la lettura" onchange="onEdit(211,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(211)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="212">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zinbèlu" title="Clicca per modificare" onchange="onEdit(212,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="zimbello" title="Clicca per modificare" onchange="onEdit(212,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zinbèlu" title="Correzione fonetica per la lettura" onchange="onEdit(212,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(212)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="213">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -3433,6 +4497,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(216)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="217">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zingu" title="Clicca per modificare" onchange="onEdit(217,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="zinco" title="Clicca per modificare" onchange="onEdit(217,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zingu" title="Correzione fonetica per la lettura" onchange="onEdit(217,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(217)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="218">
@@ -3895,6 +4979,26 @@
             <button class="btn-del" onclick="deleteEntry(240)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="241">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zmurtà" title="Clicca per modificare" onchange="onEdit(241,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="spento" title="Clicca per modificare" onchange="onEdit(241,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zmurtà" title="Correzione fonetica per la lettura" onchange="onEdit(241,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(241)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="242">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4135,6 +5239,26 @@
             <button class="btn-del" onclick="deleteEntry(253)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="254">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zmévé" title="Clicca per modificare" onchange="onEdit(254,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="muovere" title="Clicca per modificare" onchange="onEdit(254,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zmévé" title="Correzione fonetica per la lettura" onchange="onEdit(254,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(254)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="255">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4153,6 +5277,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(255)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="256">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zmòrtu" title="Clicca per modificare" onchange="onEdit(256,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="spento" title="Clicca per modificare" onchange="onEdit(256,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zmòrtu" title="Correzione fonetica per la lettura" onchange="onEdit(256,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(256)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="257">
@@ -4215,6 +5359,46 @@
             <button class="btn-del" onclick="deleteEntry(259)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="260">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zugnu" title="Clicca per modificare" onchange="onEdit(260,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="giugno" title="Clicca per modificare" onchange="onEdit(260,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zugnu" title="Correzione fonetica per la lettura" onchange="onEdit(260,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(260)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="261">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zuncu" title="Clicca per modificare" onchange="onEdit(261,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="giunco" title="Clicca per modificare" onchange="onEdit(261,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zuncu" title="Correzione fonetica per la lettura" onchange="onEdit(261,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(261)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="262">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4253,6 +5437,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(263)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="264">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zuén" title="Clicca per modificare" onchange="onEdit(264,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="celibe/nubile" title="Clicca per modificare" onchange="onEdit(264,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zuén" title="Correzione fonetica per la lettura" onchange="onEdit(264,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(264)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="265">
@@ -4435,6 +5639,46 @@
             <button class="btn-del" onclick="deleteEntry(273)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="274">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zvégnii" title="Clicca per modificare" onchange="onEdit(274,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="venire" title="Clicca per modificare" onchange="onEdit(274,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zvégnii" title="Correzione fonetica per la lettura" onchange="onEdit(274,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(274)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="275">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zvéu" title="Clicca per modificare" onchange="onEdit(275,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="volo" title="Clicca per modificare" onchange="onEdit(275,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zvéu" title="Correzione fonetica per la lettura" onchange="onEdit(275,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(275)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="276">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4453,6 +5697,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(276)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="277">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zà" title="Clicca per modificare" onchange="onEdit(277,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="già" title="Clicca per modificare" onchange="onEdit(277,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zà" title="Correzione fonetica per la lettura" onchange="onEdit(277,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(277)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="278">
@@ -4655,6 +5919,26 @@
             <button class="btn-del" onclick="deleteEntry(287)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="288">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zénuciu" title="Clicca per modificare" onchange="onEdit(288,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="ginocchio" title="Clicca per modificare" onchange="onEdit(288,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zénuciu" title="Correzione fonetica per la lettura" onchange="onEdit(288,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(288)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="289">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4695,6 +5979,26 @@
             <button class="btn-del" onclick="deleteEntry(290)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="291">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zénzéu" title="Clicca per modificare" onchange="onEdit(291,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="peperoncino, zenzero" title="Clicca per modificare" onchange="onEdit(291,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zénzéu" title="Correzione fonetica per la lettura" onchange="onEdit(291,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(291)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="292">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4713,6 +6017,66 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(292)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="293">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zénéstrùn" title="Clicca per modificare" onchange="onEdit(293,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="ginestrone" title="Clicca per modificare" onchange="onEdit(293,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zénéstrùn" title="Correzione fonetica per la lettura" onchange="onEdit(293,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(293)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="294">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zénëvru" title="Clicca per modificare" onchange="onEdit(294,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="ginepro" title="Clicca per modificare" onchange="onEdit(294,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zénëvru" title="Correzione fonetica per la lettura" onchange="onEdit(294,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(294)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="295">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zénëzé" title="Clicca per modificare" onchange="onEdit(295,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="genovese" title="Clicca per modificare" onchange="onEdit(295,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zénëzé" title="Correzione fonetica per la lettura" onchange="onEdit(295,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(295)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="296">
@@ -4755,6 +6119,26 @@
             <button class="btn-del" onclick="deleteEntry(297)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="298">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zérbìn" title="Clicca per modificare" onchange="onEdit(298,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="zerbino, stuoino" title="Clicca per modificare" onchange="onEdit(298,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zérbìn" title="Correzione fonetica per la lettura" onchange="onEdit(298,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(298)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="299">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4773,6 +6157,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(299)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="300">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zënzéu" title="Clicca per modificare" onchange="onEdit(300,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="peperoncino, zenzero" title="Clicca per modificare" onchange="onEdit(300,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zënzéu" title="Correzione fonetica per la lettura" onchange="onEdit(300,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(300)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="301">
@@ -4855,6 +6259,26 @@
             <button class="btn-del" onclick="deleteEntry(304)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="305">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zìutundu" title="Clicca per modificare" onchange="onEdit(305,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="girotondo" title="Clicca per modificare" onchange="onEdit(305,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zìutundu" title="Correzione fonetica per la lettura" onchange="onEdit(305,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(305)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="306">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -4893,6 +6317,46 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(307)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="308">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zòzu" title="Clicca per modificare" onchange="onEdit(308,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="sporco" title="Clicca per modificare" onchange="onEdit(308,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zòzu" title="Correzione fonetica per la lettura" onchange="onEdit(308,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(308)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="309">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zòzu" title="Clicca per modificare" onchange="onEdit(309,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="sporco" title="Clicca per modificare" onchange="onEdit(309,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zòzu" title="Correzione fonetica per la lettura" onchange="onEdit(309,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(309)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="310">
@@ -5055,9 +6519,29 @@
             <button class="btn-del" onclick="deleteEntry(317)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="318">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="zünzé" title="Clicca per modificare" onchange="onEdit(318,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="ungere" title="Clicca per modificare" onchange="onEdit(318,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="zünzé" title="Correzione fonetica per la lettura" onchange="onEdit(318,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(318)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
     </div>
     <div class="letter-section" id="letter-À">
-      <div class="letter-heading">À <span>16</span></div>
+      <div class="letter-heading">À <span>17</span></div>
       
         <div class="word-card  " data-idx="319">
           <div class="field-wrap">
@@ -5319,6 +6803,26 @@
             <button class="btn-del" onclick="deleteEntry(331)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="332">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="àzvèrtu" title="Clicca per modificare" onchange="onEdit(332,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="svelto" title="Clicca per modificare" onchange="onEdit(332,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="àzvèrtu" title="Correzione fonetica per la lettura" onchange="onEdit(332,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(332)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="333">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -5381,7 +6885,7 @@
         </div>
     </div>
     <div class="letter-section" id="letter-Ù">
-      <div class="letter-heading">Ù <span>7</span></div>
+      <div class="letter-heading">Ù <span>9</span></div>
       
         <div class="word-card  " data-idx="336">
           <div class="field-wrap">
@@ -5423,6 +6927,26 @@
             <button class="btn-del" onclick="deleteEntry(337)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="338">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="ùndé" title="Clicca per modificare" onchange="onEdit(338,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="dove" title="Clicca per modificare" onchange="onEdit(338,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="ùndé" title="Correzione fonetica per la lettura" onchange="onEdit(338,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(338)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="339">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -5441,6 +6965,26 @@
           <div class="card-right">
             <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
             <button class="btn-del" onclick="deleteEntry(339)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="340">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="ùnéstu" title="Clicca per modificare" onchange="onEdit(340,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="giusto" title="Clicca per modificare" onchange="onEdit(340,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="ùnéstu" title="Correzione fonetica per la lettura" onchange="onEdit(340,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(340)" title="Elimina voce">🗑</button>
           </div>
         </div>
         <div class="word-card  " data-idx="341">
@@ -5549,7 +7093,7 @@
         </div>
     </div>
     <div class="letter-section" id="letter-Ü">
-      <div class="letter-heading">Ü <span>4</span></div>
+      <div class="letter-heading">Ü <span>6</span></div>
       
         <div class="word-card  " data-idx="346">
           <div class="field-wrap">
@@ -5611,6 +7155,46 @@
             <button class="btn-del" onclick="deleteEntry(348)" title="Elimina voce">🗑</button>
           </div>
         </div>
+        <div class="word-card  " data-idx="349">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="ünguëntu" title="Clicca per modificare" onchange="onEdit(349,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="unguento, linimento" title="Clicca per modificare" onchange="onEdit(349,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="ünguëntu" title="Correzione fonetica per la lettura" onchange="onEdit(349,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(349)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
+        <div class="word-card  " data-idx="350">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese </span>
+            <input class="field-input mn-input" type="text" value="ünicu" title="Clicca per modificare" onchange="onEdit(350,'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="unico" title="Clicca per modificare" onchange="onEdit(350,'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="ünicu" title="Correzione fonetica per la lettura" onchange="onEdit(350,'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(350)" title="Elimina voce">🗑</button>
+          </div>
+        </div>
         <div class="word-card  " data-idx="351">
           <div class="field-wrap">
             <span class="field-label">Manarolese </span>
@@ -5641,7 +7225,7 @@
 <script>
 // ── DATI (modificati automaticamente al salvataggio) ─────────────────────
 //VOCABOLARIO_START
-const VOCABOLARIO = [{"mn":"avarià","it":"avariato, guasto"},{"mn":"avee","it":"avere"},{"mn":"nasiun","it":"nazione","pron":"nassiun"},{"mn":"negru","it":"arrabbiato"},{"mn":"nàiza","it":"narice"},{"mn":"nànsi","it":"piuttosto"},{"mn":"nànti","it":"innanzi, davanti"},{"mn":"nànëtu","it":"nano"},{"mn":"nàpia","it":"rosso"},{"mn":"nàzièlu","it":"pesce"},{"mn":"nàzu","it":"naso"},{"mn":"nècu","it":"umore"},{"mn":"nédaa","it":"nuotare"},{"mn":"nédu","it":"nuoto"},{"mn":"négaa","it":"negare"},{"mn":"négosciu","it":"bottega, affare"},{"mn":"sciancà","it":"sciancato, claudicante"},{"mn":"sciancùn","it":"strattone"},{"mn":"sciatà","it":"denti"},{"mn":"sciàfer","it":"autista"},{"mn":"sciàfu","it":"schiaffo"},{"mn":"sciàlaa","it":"acqua"},{"mn":"scié","it":"cielo"},{"mn":"sciérca","it":"cerca, questua"},{"mn":"sciétu","it":"schietto, puro, onesto"},{"mn":"sciòpu","it":"fucile"},{"mn":"scògiu","it":"scoglio, masso, difficoltà"},{"mn":"scòpu","it":"scopo, fine"},{"mn":"silënsciu","it":"silenzioso"},{"mn":"sinciéu","it":"sincero"},{"mn":"sindicu","it":"sindaco"},{"mn":"smùntaa","it":"smontare, terminare il turno"},{"mn":"sìma","it":"cima, corda"},{"mn":"sìmia","it":"scimmia"},{"mn":"sìula","it":"cipolla"},{"mn":"sòciu","it":"socio, compare"},{"mn":"sòcu","it":"ceppo, ciocco"},{"mn":"sòdi","it":"soldi"},{"mn":"sòdu","it":"fermo, saldo, duro"},{"mn":"sòfégu","it":"afa"},{"mn":"sòlitu","it":"insolito"},{"mn":"sòpu","it":"zoppo, claudicante"},{"mn":"tichiu","it":"tic nervoso"},{"mn":"tifu","it":"tifo"},{"mn":"tigiu","it":"tiglio"},{"mn":"tigna","it":"spilorcio, taccagno"},{"mn":"tignuzu","it":"avaro"},{"mn":"timuniés","it":"timoniere"},{"mn":"tina","it":"tino, botte verticale"},{"mn":"tinta","it":"tintura, colorante"},{"mn":"tipa","it":"rattoppo, grillotalpa"},{"mn":"tirchiu","it":"avaro"},{"mn":"tiénèu","it":"morbido"},{"mn":"tiévédu","it":"tiepido"},{"mn":"togu","it":"eccezionale"},{"mn":"tradisciùn","it":"tradizione, usanza"},{"mn":"tràbalaa","it":"ballare"},{"mn":"tràcaa","it":"attraccare"},{"mn":"tràcanaa","it":"tracannare, ingurgitare"},{"mn":"tràcia","it":"traccia, impronta"},{"mn":"tràdii","it":"tradire"},{"mn":"tràfégu","it":"traffico, movimento"},{"mn":"tràgitu","it":"cammino"},{"mn":"tìmùn","it":"timone"},{"mn":"tòcu","it":"pezzo"},{"mn":"tòrtu","it":"torto, offesa"},{"mn":"tòru","it":"toro"},{"mn":"tòstu","it":"duro di comprendonio"},{"mn":"tòségu","it":"tossico, veleno"},{"mn":"tòtanu","it":"amaro"},{"mn":"umilé","it":"umile, modesto"},{"mn":"unéstà","it":"onestà, sincerità"},{"mn":"vigné","it":"vigneti"},{"mn":"vila","it":"villa, podere a mezzadria"},{"mn":"vilàn","it":"contadino, cafone"},{"mn":"vinsé","it":"vincere"},{"mn":"vintena","it":"ventina"},{"mn":"vinti","it":"venti"},{"mn":"vinëtu","it":"vino leggero"},{"mn":"viraa","it":"girare di bordo, curvare"},{"mn":"virtü","it":"virtù"},{"mn":"visciu","it":"vizio"},{"mn":"vistaa","it":"adocchiare, avvistare"},{"mn":"vita","it":"vita, girovita"},{"mn":"viédràda","it":"vetrata"},{"mn":"viérdùn","it":"verdone, tipo di uccello"},{"mn":"viùlensa","it":"violenza"},{"mn":"viùlin","it":"violino"},{"mn":"viùlëntu","it":"violento, manesco"},{"mn":"vree","it":"volere"},{"mn":"vrëëbën","it":"amare"},{"mn":"vuluntà","it":"volontà"},{"mn":"vurcàn","it":"vulcano, persona molto attiva"},{"mn":"vutasciùn","it":"votazioni, elezioni"},{"mn":"vìgna","it":"vite"},{"mn":"vìn","it":"vino"},{"mn":"vìnëta","it":"vinello ottenuto passando acqua sulle vinacce"},{"mn":"vìpéra","it":"vipera, donna cattiva"},{"mn":"vìraa","it":"girare di bordo, curvare"},{"mn":"vìsciaa","it":"viziare"},{"mn":"vìtèlu","it":"vitello"},{"mn":"vìvé","it":"vivere"},{"mn":"vìédru","it":"vetro"},{"mn":"vìégiu","it":"viaggio/gita"},{"mn":"vìérdu","it":"verde"},{"mn":"vìùlëta","it":"viola"},{"mn":"vògia","it":"voglia, desiderio"},{"mn":"vòrtu","it":"volto, porticato"},{"mn":"vùaa","it":"volare"},{"mn":"vùcabulaiu","it":"vocabolario"},{"mn":"vùgaa","it":"remare"},{"mn":"vùgiaa","it":"avvolgere, arrotolare"},{"mn":"vùtaa","it":"votare"},{"mn":"vùza","it":"voce, urlo, chiamata"},{"mn":"zanbaiùn","it":"zabaione"},{"mn":"zbilèrciu","it":"strabico, storto"},{"mn":"zbiléncu","it":"claudicante, traballante"},{"mn":"zbiécu","it":"sbieco, inclinato"},{"mn":"zbragiùn","it":"chiacchierone"},{"mn":"zbrilà","it":"ritorto, attorcigliato"},{"mn":"zbràgiaa","it":"urlare / sbraitare"},{"mn":"zbràgiu","it":"urlo, rimprovero"},{"mn":"zbrùgiaa","it":"sbrogliare"},{"mn":"zbrùgiasé","it":"cavarsi d'impiccio, affrettarsi"},{"mn":"zbrùzaa","it":"cogliere acerbo"},{"mn":"zbulinà","it":"disordinato, trasandato"},{"mn":"zbàgiu","it":"aglio"},{"mn":"zbàramentu","it":"sbarramento, ostacolo"},{"mn":"zbàssaa","it":"abbassare, diminuire"},{"mn":"zbàté","it":"sbattere, urtare"},{"mn":"zbècu","it":"urlo sguaiato, richiamo"},{"mn":"zbèru","it":"strappo, profonda ferita"},{"mn":"zbézu","it":"che ha vuoti o cavità"},{"mn":"zbìru","it":"poliziotto"},{"mn":"zbùcaa","it":"sboccare, disintasare"},{"mn":"zbùgii","it":"sbollire, fermentare"},{"mn":"zbùrii","it":"scacciare, mandar via con durezza"},{"mn":"zbùtaa","it":"togliere il vino dalla botte"},{"mn":"zbùzaa","it":"sviscerare, svuotare"},{"mn":"zbùzardaa","it":"smentire pubblicamente"},{"mn":"zbüdélaa","it":"sventrare"},{"mn":"zbüfaa","it":"sbuffare"},{"mn":"zbüzaa","it":"sviscerare, svuotare"},{"mn":"zbüzà","it":"sviscerato, svuotato"},{"mn":"zemé","it":"gemere, lamentarsi"},{"mn":"zeu","it":"zero"},{"mn":"zeùn","it":"gelone"},{"mn":"zgaagò","it":"lumaca"},{"mn":"zganassùn","it":"manrovescio, schiaffo sulla guancia"},{"mn":"zgarbélà","it":"escoriato, graffiato"},{"mn":"zghigiaa","it":"volare"},{"mn":"zghigiada","it":"scivolone"},{"mn":"zghigiuëntu","it":"scivoloso"},{"mn":"zghigiùn","it":"boletus bovinus, fungo deliquescente"},{"mn":"zghignassaa","it":"ridere in modo sguaiato e provocatorio"},{"mn":"zghìgiaa","it":"scivolare"},{"mn":"zghìgiada","it":"scivolone"},{"mn":"zghìgiadèlé","it":"scivolate"},{"mn":"zghìnda","it":"colui che evita"},{"mn":"zghìndaa","it":"evitare / scansare"},{"mn":"zghìribissu","it":"capriccio"},{"mn":"zghìu","it":"ghiro, dormiglione"},{"mn":"zgnèra","it":"pernacchia"},{"mn":"zgnìfra","it":"carota"},{"mn":"zgnòcua","it":"ponfo, gonfiore"},{"mn":"zgrinfia","it":"artiglio, grinfia"},{"mn":"zgràfignaa","it":"sgraffignare, rubare"},{"mn":"zgrëndia","it":"fessura, spaccatura nella roccia"},{"mn":"zgrìnfia","it":"artiglio, grinfia"},{"mn":"zgrùstaa","it":"scrostare, togliere l'intonaco"},{"mn":"zgrüpaa","it":"disfare i nodi"},{"mn":"zgrüzu","it":"re"},{"mn":"zgrüzu","it":"grezzo, non intonacato"},{"mn":"zgubùn","it":"sgobbone"},{"mn":"zguà","it":"bagnato"},{"mn":"zguà","it":"bagnato, fradicio"},{"mn":"zguàraa","it":"lacerare, strappare"},{"mn":"zguàru","it":"strappo, lacerazione"},{"mn":"zguàssa","it":"da/da quando"},{"mn":"zguàssa","it":"rugiada, guazza"},{"mn":"zguàssaa","it":"sguazzare"},{"mn":"zgànassasé","it":"sganasciarsi, ridere a crepapelle"},{"mn":"zgànzia","it":"ripiano/scaffale"},{"mn":"zgàrbu","it":"sgarbo, offesa"},{"mn":"zgàrbéladüa","it":"escoriazione"},{"mn":"zgàrbélasé","it":"escoriarsi"},{"mn":"zgàrfignaa","it":"graffiare"},{"mn":"zgàrzuèla","it":"ragazza allegra e vivace"},{"mn":"zgùaa","it":"bagnare, gocciolare"},{"mn":"zgùagé","it":"alla fine, agli sgoccioli"},{"mn":"zgùaldrina","it":"sgualdrina"},{"mn":"zgùasé","it":"bagnarsi"},{"mn":"zgùasé","it":"bagnarsi, scolarsi"},{"mn":"zgùbaa","it":"fa"},{"mn":"zgùbaa","it":"sgobbare, sfacchinare"},{"mn":"zgùrbia","it":"sgorbia, scalpello ricurvo per l'olivo"},{"mn":"zgüssaa","it":"sgusciare, gocciolare"},{"mn":"zgüssà","it":"sci"},{"mn":"zgüssà","it":"sgusciato"},{"mn":"ziaa","it":"girare/svolta"},{"mn":"ziaa","it":"girare, passeggiare, voltare"},{"mn":"ziabéchìn","it":"trapano manuale"},{"mn":"ziamuìn","it":"girella"},{"mn":"ziasé","it":"girarsi, voltarsi"},{"mn":"ziatùn","it":"se"},{"mn":"ziatùn","it":"persona sempre in giro"},{"mn":"zietu","it":"giretto, passeggiata"},{"mn":"ziguiéla","it":"pesce"},{"mn":"ziguiéla","it":"donzella, pesce di mare"},{"mn":"zina","it":"capruggine, scanalatura delle doghe"},{"mn":"zinaa","it":"fondale marino a posidonia"},{"mn":"zinbèlu","it":"bello"},{"mn":"zinbèlu","it":"zimbello"},{"mn":"zingaa","it":"donna"},{"mn":"zingaa","it":"zingara, donna sporca e trasandata"},{"mn":"zingau","it":"senza"},{"mn":"zingau","it":"zingaro, persona senza fissa dimora"},{"mn":"zingu","it":"zinco"},{"mn":"zingà","it":"zincato, flemmatico"},{"mn":"zinzin","it":"mare"},{"mn":"zinzin","it":"riccio di mare"},{"mn":"zitélùn","it":"capo"},{"mn":"zitélùn","it":"vitellone, scapolone"},{"mn":"ziu","it":"viaggio"},{"mn":"ziu","it":"viaggio, giro"},{"mn":"zizua","it":"giuggiola, frutto"},{"mn":"zizània","it":"zizzania, discordia"},{"mn":"ziùn","it":"costone instabile"},{"mn":"zlargaa","it":"corse/gare"},{"mn":"zlargaa","it":"allargare"},{"mn":"zlèpa","it":"zio"},{"mn":"zlèpa","it":"grossa porzione, ceffone"},{"mn":"zlüngasé","it":"allungarsi"},{"mn":"zmalissià","it":"zia"},{"mn":"zmalissià","it":"smaliziato, accorto"},{"mn":"zmangiazùn","it":"prurito"},{"mn":"zmangiazùn","it":"prurito"},{"mn":"zmangià","it":"con"},{"mn":"zmangià","it":"consumato, abraso"},{"mn":"zmurtaa","it":"fuoco"},{"mn":"zmurtaa","it":"spegnere il fuoco o il lume"},{"mn":"zmurtà","it":"spento"},{"mn":"zmàciaa","it":"rete"},{"mn":"zmàciaa","it":"smacchiare, togliere dalle maglie della rete"},{"mn":"zmàdunaa","it":"imprecare, bestemmiare"},{"mn":"zmàgrii","it":"dimagrire"},{"mn":"zmàmaa","it":"veloce"},{"mn":"zmàmaa","it":"andar via velocemente"},{"mn":"zmàngiaa","it":"mare"},{"mn":"zmàngiaa","it":"prudere, consumare"},{"mn":"zmànéciaa","it":"armeggiare"},{"mn":"zmànégadüa","it":"tre"},{"mn":"zmànégadüa","it":"destrezza"},{"mn":"zmèzaa","it":"dividere in metà"},{"mn":"zmévé","it":"muovere"},{"mn":"zmëté","it":"cessare, terminare"},{"mn":"zmòrtu","it":"spento"},{"mn":"zmòssa","it":"cambiamento meteo, movimento, mossa"},{"mn":"zmüciaa","it":"dare"},{"mn":"zmüciaa","it":"smucchiare, dilapidare"},{"mn":"zugnu","it":"giugno"},{"mn":"zuncu","it":"giunco"},{"mn":"zuzùn","it":"sporcaccione, persona trasandata"},{"mn":"zuàru","it":"scoiattolo"},{"mn":"zuén","it":"celibe/nubile"},{"mn":"zuéna","it":"giovane"},{"mn":"zuénotu","it":"giovanotto"},{"mn":"zuéntù","it":"gioventù, giovinezza"},{"mn":"zvàlizaa","it":"svaligiare"},{"mn":"zvàpuraa","it":"evaporare"},{"mn":"zvàriaa","it":"vaneggiare"},{"mn":"zvéaa","it":"volare"},{"mn":"zvégiaa","it":"allarme/sveglia"},{"mn":"zvégiu","it":"sveglio, scaltro, smaliziato"},{"mn":"zvégnii","it":"venire"},{"mn":"zvéu","it":"volo"},{"mn":"zvìdaa","it":"svitare"},{"mn":"zà","it":"già"},{"mn":"zàlu","it":"giallo"},{"mn":"zàvura","it":"zavorra"},{"mn":"zèrbiu","it":"incolto, abbandonato"},{"mn":"zètu","it":"detriti di muratura"},{"mn":"zéaa","it":"gelare"},{"mn":"zébibu","it":"zibibbo, uva passa"},{"mn":"zégu","it":"gioco/partita"},{"mn":"zémitu","it":"gemito, lamento"},{"mn":"zémé","it":"gemere, lamentarsi"},{"mn":"zénaa","it":"gennaio"},{"mn":"zénuciu","it":"ginocchio"},{"mn":"zénucià","it":"ginocchiata"},{"mn":"zénzigia","it":"gengiva"},{"mn":"zénzéu","it":"peperoncino, zenzero"},{"mn":"zénéstra","it":"ginestra"},{"mn":"zénéstrùn","it":"ginestrone"},{"mn":"zénëvru","it":"ginepro"},{"mn":"zénëzé","it":"genovese"},{"mn":"zépa","it":"cuneo, zeppa"},{"mn":"zérbiu","it":"incolto, abbandonato"},{"mn":"zérbìn","it":"zerbino, stuoino"},{"mn":"zéà","it":"gelato, molto freddo"},{"mn":"zënzéu","it":"peperoncino, zenzero"},{"mn":"zìabandiéa","it":"voltagabbana"},{"mn":"zìamëntu","it":"giramento"},{"mn":"zìaotu","it":"giravolta, piroetta"},{"mn":"zìataa","it":"gironzolare"},{"mn":"zìutundu","it":"girotondo"},{"mn":"zògia","it":"giovedì"},{"mn":"zògia","it":"giovedì"},{"mn":"zòzu","it":"sporco"},{"mn":"zòzu","it":"sporco"},{"mn":"zùmbaa","it":"bussare/picchiare"},{"mn":"zü","it":"basso"},{"mn":"zü","it":"giù, da basso"},{"mn":"züaa","it":"giurare"},{"mn":"züamentu","it":"giuramento"},{"mn":"zügaa","it":"giocare/suonare"},{"mn":"zünta","it":"aggiunta, rattoppo"},{"mn":"züntüa","it":"colazione"},{"mn":"zünzé","it":"ungere"},{"mn":"àutu","it":"alto, profondo"},{"mn":"àutunus","it":"autunno"},{"mn":"àva","it":"ape"},{"mn":"àvansaa","it":"avanzare"},{"mn":"àvizaa","it":"avvisare, avvertire"},{"mn":"àvèrtu","it":"aperto"},{"mn":"àvèrtüa","it":"apertura"},{"mn":"àvérsaiu","it":"avversario"},{"mn":"àvértii","it":"avvertire"},{"mn":"àvëna","it":"avena"},{"mn":"àvëssu","it":"abituato, avvezzo"},{"mn":"àzbriviu","it":"impeto, slancio"},{"mn":"àziënda","it":"ditta, esercizio"},{"mn":"àzvèrtu","it":"svelto"},{"mn":"àzén","it":"asino"},{"mn":"àzëë","it":"aceto"},{"mn":"àzünzé","it":"raggiungere"},{"mn":"ùmigliaa","it":"umiliare"},{"mn":"ùnda","it":"onda"},{"mn":"ùndé","it":"dove"},{"mn":"ùnuaa","it":"onorare"},{"mn":"ùnéstu","it":"giusto"},{"mn":"ùrbii","it":"accecare, orbire"},{"mn":"ùrciula","it":"ulcera"},{"mn":"ùrdén","it":"ordine, comando"},{"mn":"ùrdénaa","it":"mandare"},{"mn":"únzé","it":"ungere, lubrificare"},{"mn":"ümëtu","it":"ometto, gruccia"},{"mn":"üngia","it":"unghia"},{"mn":"üngiaa","it":"graffiare"},{"mn":"ünguëntu","it":"unguento, linimento"},{"mn":"ünicu","it":"unico"},{"mn":"üntu","it":"unto, oliato"}];
+const VOCABOLARIO = [{"mn":"avarià","it":"avariato, guasto"},{"mn":"avee","it":"avere"},{"mn":"nasiun","it":"nazione","pron":"Nassiùn"},{"mn":"negru","it":"arrabbiato"},{"mn":"nàiza","it":"narice"},{"mn":"nànsi","it":"piuttosto"},{"mn":"nànti","it":"innanzi, davanti"},{"mn":"nànëtu","it":"nano"},{"mn":"nàpia","it":"rosso"},{"mn":"nàzièlu","it":"pesce"},{"mn":"nàzu","it":"naso"},{"mn":"nècu","it":"umore"},{"mn":"nédaa","it":"nuotare"},{"mn":"nédu","it":"nuoto"},{"mn":"négaa","it":"negare"},{"mn":"négosciu","it":"bottega, affare"},{"mn":"sciancà","it":"sciancato, claudicante"},{"mn":"sciancùn","it":"strattone"},{"mn":"sciatà","it":"denti"},{"mn":"sciàfer","it":"autista"},{"mn":"sciàfu","it":"schiaffo"},{"mn":"sciàlaa","it":"acqua"},{"mn":"scié","it":"cielo"},{"mn":"sciérca","it":"cerca, questua"},{"mn":"sciétu","it":"schietto, puro, onesto"},{"mn":"sciòpu","it":"fucile"},{"mn":"scògiu","it":"scoglio, masso, difficoltà"},{"mn":"scòpu","it":"scopo, fine"},{"mn":"silënsciu","it":"silenzioso"},{"mn":"sinciéu","it":"sincero"},{"mn":"sindicu","it":"sindaco"},{"mn":"smùntaa","it":"smontare, terminare il turno"},{"mn":"sìma","it":"cima, corda"},{"mn":"sìmia","it":"scimmia"},{"mn":"sìula","it":"cipolla"},{"mn":"sòciu","it":"socio, compare"},{"mn":"sòcu","it":"ceppo, ciocco"},{"mn":"sòdi","it":"soldi"},{"mn":"sòdu","it":"fermo, saldo, duro"},{"mn":"sòfégu","it":"afa"},{"mn":"sòlitu","it":"insolito"},{"mn":"sòpu","it":"zoppo, claudicante"},{"mn":"tichiu","it":"tic nervoso"},{"mn":"tifu","it":"tifo"},{"mn":"tigiu","it":"tiglio"},{"mn":"tigna","it":"spilorcio, taccagno"},{"mn":"tignuzu","it":"avaro"},{"mn":"timuniés","it":"timoniere"},{"mn":"tina","it":"tino, botte verticale"},{"mn":"tinta","it":"tintura, colorante"},{"mn":"tipa","it":"rattoppo, grillotalpa"},{"mn":"tirchiu","it":"avaro"},{"mn":"tiénèu","it":"morbido"},{"mn":"tiévédu","it":"tiepido"},{"mn":"togu","it":"eccezionale"},{"mn":"tradisciùn","it":"tradizione, usanza"},{"mn":"tràbalaa","it":"ballare"},{"mn":"tràcaa","it":"attraccare"},{"mn":"tràcanaa","it":"tracannare, ingurgitare"},{"mn":"tràcia","it":"traccia, impronta"},{"mn":"tràdii","it":"tradire"},{"mn":"tràfégu","it":"traffico, movimento"},{"mn":"tràgitu","it":"cammino"},{"mn":"tìmùn","it":"timone"},{"mn":"tòcu","it":"pezzo"},{"mn":"tòrtu","it":"torto, offesa"},{"mn":"tòru","it":"toro"},{"mn":"tòstu","it":"duro di comprendonio"},{"mn":"tòségu","it":"tossico, veleno"},{"mn":"tòtanu","it":"amaro"},{"mn":"umilé","it":"umile, modesto"},{"mn":"unéstà","it":"onestà, sincerità"},{"mn":"vigné","it":"vigneti"},{"mn":"vila","it":"villa, podere a mezzadria"},{"mn":"vilàn","it":"contadino, cafone"},{"mn":"vinsé","it":"vincere"},{"mn":"vintena","it":"ventina"},{"mn":"vinti","it":"venti"},{"mn":"vinëtu","it":"vino leggero"},{"mn":"viraa","it":"girare di bordo, curvare"},{"mn":"virtü","it":"virtù"},{"mn":"visciu","it":"vizio"},{"mn":"vistaa","it":"adocchiare, avvistare"},{"mn":"vita","it":"vita, girovita"},{"mn":"viédràda","it":"vetrata"},{"mn":"viérdùn","it":"verdone, tipo di uccello"},{"mn":"viùlensa","it":"violenza"},{"mn":"viùlin","it":"violino"},{"mn":"viùlëntu","it":"violento, manesco"},{"mn":"vree","it":"volere"},{"mn":"vrëëbën","it":"amare"},{"mn":"vuluntà","it":"volontà"},{"mn":"vurcàn","it":"vulcano, persona molto attiva"},{"mn":"vutasciùn","it":"votazioni, elezioni"},{"mn":"vìgna","it":"vite"},{"mn":"vìn","it":"vino"},{"mn":"vìnëta","it":"vinello ottenuto passando acqua sulle vinacce"},{"mn":"vìpéra","it":"vipera, donna cattiva"},{"mn":"vìraa","it":"girare di bordo, curvare"},{"mn":"vìsciaa","it":"viziare"},{"mn":"vìtèlu","it":"vitello"},{"mn":"vìvé","it":"vivere"},{"mn":"vìédru","it":"vetro"},{"mn":"vìégiu","it":"viaggio/gita"},{"mn":"vìérdu","it":"verde"},{"mn":"vìùlëta","it":"viola"},{"mn":"vògia","it":"voglia, desiderio"},{"mn":"vòrtu","it":"volto, porticato"},{"mn":"vùaa","it":"volare"},{"mn":"vùcabulaiu","it":"vocabolario"},{"mn":"vùgaa","it":"remare"},{"mn":"vùgiaa","it":"avvolgere, arrotolare"},{"mn":"vùtaa","it":"votare"},{"mn":"vùza","it":"voce, urlo, chiamata"},{"mn":"zanbaiùn","it":"zabaione"},{"mn":"zbilèrciu","it":"strabico, storto"},{"mn":"zbiléncu","it":"claudicante, traballante"},{"mn":"zbiécu","it":"sbieco, inclinato"},{"mn":"zbragiùn","it":"chiacchierone"},{"mn":"zbrilà","it":"ritorto, attorcigliato"},{"mn":"zbràgiaa","it":"urlare / sbraitare"},{"mn":"zbràgiu","it":"urlo, rimprovero"},{"mn":"zbrùgiaa","it":"sbrogliare"},{"mn":"zbrùgiasé","it":"cavarsi d'impiccio, affrettarsi"},{"mn":"zbrùzaa","it":"cogliere acerbo"},{"mn":"zbulinà","it":"disordinato, trasandato"},{"mn":"zbàgiu","it":"aglio"},{"mn":"zbàramentu","it":"sbarramento, ostacolo"},{"mn":"zbàssaa","it":"abbassare, diminuire"},{"mn":"zbàté","it":"sbattere, urtare"},{"mn":"zbècu","it":"urlo sguaiato, richiamo"},{"mn":"zbèru","it":"strappo, profonda ferita"},{"mn":"zbézu","it":"che ha vuoti o cavità"},{"mn":"zbìru","it":"poliziotto"},{"mn":"zbùcaa","it":"sboccare, disintasare"},{"mn":"zbùgii","it":"sbollire, fermentare"},{"mn":"zbùrii","it":"scacciare, mandar via con durezza"},{"mn":"zbùtaa","it":"togliere il vino dalla botte"},{"mn":"zbùzaa","it":"sviscerare, svuotare"},{"mn":"zbùzardaa","it":"smentire pubblicamente"},{"mn":"zbüdélaa","it":"sventrare"},{"mn":"zbüfaa","it":"sbuffare"},{"mn":"zbüzaa","it":"sviscerare, svuotare"},{"mn":"zbüzà","it":"sviscerato, svuotato"},{"mn":"zemé","it":"gemere, lamentarsi"},{"mn":"zeu","it":"zero"},{"mn":"zeùn","it":"gelone"},{"mn":"zgaagò","it":"lumaca"},{"mn":"zganassùn","it":"manrovescio, schiaffo sulla guancia"},{"mn":"zgarbélà","it":"escoriato, graffiato"},{"mn":"zghigiaa","it":"volare"},{"mn":"zghigiada","it":"scivolone"},{"mn":"zghigiuëntu","it":"scivoloso"},{"mn":"zghigiùn","it":"boletus bovinus, fungo deliquescente"},{"mn":"zghignassaa","it":"ridere in modo sguaiato e provocatorio"},{"mn":"zghìgiaa","it":"scivolare"},{"mn":"zghìgiada","it":"scivolone"},{"mn":"zghìgiadèlé","it":"scivolate"},{"mn":"zghìnda","it":"colui che evita"},{"mn":"zghìndaa","it":"evitare / scansare"},{"mn":"zghìribissu","it":"capriccio"},{"mn":"zghìu","it":"ghiro, dormiglione"},{"mn":"zgnèra","it":"pernacchia"},{"mn":"zgnìfra","it":"carota"},{"mn":"zgnòcua","it":"ponfo, gonfiore"},{"mn":"zgrinfia","it":"artiglio, grinfia"},{"mn":"zgràfignaa","it":"sgraffignare, rubare"},{"mn":"zgrëndia","it":"fessura, spaccatura nella roccia"},{"mn":"zgrìnfia","it":"artiglio, grinfia"},{"mn":"zgrùstaa","it":"scrostare, togliere l'intonaco"},{"mn":"zgrüpaa","it":"disfare i nodi"},{"mn":"zgrüzu","it":"re"},{"mn":"zgrüzu","it":"grezzo, non intonacato"},{"mn":"zgubùn","it":"sgobbone"},{"mn":"zguà","it":"bagnato"},{"mn":"zguà","it":"bagnato, fradicio"},{"mn":"zguàraa","it":"lacerare, strappare"},{"mn":"zguàru","it":"strappo, lacerazione"},{"mn":"zguàssa","it":"da/da quando"},{"mn":"zguàssa","it":"rugiada, guazza"},{"mn":"zguàssaa","it":"sguazzare"},{"mn":"zgànassasé","it":"sganasciarsi, ridere a crepapelle"},{"mn":"zgànzia","it":"ripiano/scaffale"},{"mn":"zgàrbu","it":"sgarbo, offesa"},{"mn":"zgàrbéladüa","it":"escoriazione"},{"mn":"zgàrbélasé","it":"escoriarsi"},{"mn":"zgàrfignaa","it":"graffiare"},{"mn":"zgàrzuèla","it":"ragazza allegra e vivace"},{"mn":"zgùaa","it":"bagnare, gocciolare"},{"mn":"zgùagé","it":"alla fine, agli sgoccioli"},{"mn":"zgùaldrina","it":"sgualdrina"},{"mn":"zgùasé","it":"bagnarsi"},{"mn":"zgùasé","it":"bagnarsi, scolarsi"},{"mn":"zgùbaa","it":"fa"},{"mn":"zgùbaa","it":"sgobbare, sfacchinare"},{"mn":"zgùrbia","it":"sgorbia, scalpello ricurvo per l'olivo"},{"mn":"zgüssaa","it":"sgusciare, gocciolare"},{"mn":"zgüssà","it":"sci"},{"mn":"zgüssà","it":"sgusciato"},{"mn":"ziaa","it":"girare/svolta"},{"mn":"ziaa","it":"girare, passeggiare, voltare"},{"mn":"ziabéchìn","it":"trapano manuale"},{"mn":"ziamuìn","it":"girella"},{"mn":"ziasé","it":"girarsi, voltarsi"},{"mn":"ziatùn","it":"se"},{"mn":"ziatùn","it":"persona sempre in giro"},{"mn":"zietu","it":"giretto, passeggiata"},{"mn":"ziguiéla","it":"pesce"},{"mn":"ziguiéla","it":"donzella, pesce di mare"},{"mn":"zina","it":"capruggine, scanalatura delle doghe"},{"mn":"zinaa","it":"fondale marino a posidonia"},{"mn":"zinbèlu","it":"bello"},{"mn":"zinbèlu","it":"zimbello"},{"mn":"zingaa","it":"donna"},{"mn":"zingaa","it":"zingara, donna sporca e trasandata"},{"mn":"zingau","it":"senza"},{"mn":"zingau","it":"zingaro, persona senza fissa dimora"},{"mn":"zingu","it":"zinco"},{"mn":"zingà","it":"zincato, flemmatico"},{"mn":"zinzin","it":"mare"},{"mn":"zinzin","it":"riccio di mare"},{"mn":"zitélùn","it":"capo"},{"mn":"zitélùn","it":"vitellone, scapolone"},{"mn":"ziu","it":"viaggio"},{"mn":"ziu","it":"viaggio, giro"},{"mn":"zizua","it":"giuggiola, frutto"},{"mn":"zizània","it":"zizzania, discordia"},{"mn":"ziùn","it":"costone instabile"},{"mn":"zlargaa","it":"corse/gare"},{"mn":"zlargaa","it":"allargare"},{"mn":"zlèpa","it":"zio"},{"mn":"zlèpa","it":"grossa porzione, ceffone"},{"mn":"zlüngasé","it":"allungarsi"},{"mn":"zmalissià","it":"zia"},{"mn":"zmalissià","it":"smaliziato, accorto"},{"mn":"zmangiazùn","it":"prurito"},{"mn":"zmangiazùn","it":"prurito"},{"mn":"zmangià","it":"con"},{"mn":"zmangià","it":"consumato, abraso"},{"mn":"zmurtaa","it":"fuoco"},{"mn":"zmurtaa","it":"spegnere il fuoco o il lume"},{"mn":"zmurtà","it":"spento"},{"mn":"zmàciaa","it":"rete"},{"mn":"zmàciaa","it":"smacchiare, togliere dalle maglie della rete"},{"mn":"zmàdunaa","it":"imprecare, bestemmiare"},{"mn":"zmàgrii","it":"dimagrire"},{"mn":"zmàmaa","it":"veloce"},{"mn":"zmàmaa","it":"andar via velocemente"},{"mn":"zmàngiaa","it":"mare"},{"mn":"zmàngiaa","it":"prudere, consumare"},{"mn":"zmànéciaa","it":"armeggiare"},{"mn":"zmànégadüa","it":"tre"},{"mn":"zmànégadüa","it":"destrezza"},{"mn":"zmèzaa","it":"dividere in metà"},{"mn":"zmévé","it":"muovere"},{"mn":"zmëté","it":"cessare, terminare"},{"mn":"zmòrtu","it":"spento"},{"mn":"zmòssa","it":"cambiamento meteo, movimento, mossa"},{"mn":"zmüciaa","it":"dare"},{"mn":"zmüciaa","it":"smucchiare, dilapidare"},{"mn":"zugnu","it":"giugno"},{"mn":"zuncu","it":"giunco"},{"mn":"zuzùn","it":"sporcaccione, persona trasandata"},{"mn":"zuàru","it":"scoiattolo"},{"mn":"zuén","it":"celibe/nubile"},{"mn":"zuéna","it":"giovane"},{"mn":"zuénotu","it":"giovanotto"},{"mn":"zuéntù","it":"gioventù, giovinezza"},{"mn":"zvàlizaa","it":"svaligiare"},{"mn":"zvàpuraa","it":"evaporare"},{"mn":"zvàriaa","it":"vaneggiare"},{"mn":"zvéaa","it":"volare"},{"mn":"zvégiaa","it":"allarme/sveglia"},{"mn":"zvégiu","it":"sveglio, scaltro, smaliziato"},{"mn":"zvégnii","it":"venire"},{"mn":"zvéu","it":"volo"},{"mn":"zvìdaa","it":"svitare"},{"mn":"zà","it":"già"},{"mn":"zàlu","it":"giallo"},{"mn":"zàvura","it":"zavorra"},{"mn":"zèrbiu","it":"incolto, abbandonato"},{"mn":"zètu","it":"detriti di muratura"},{"mn":"zéaa","it":"gelare"},{"mn":"zébibu","it":"zibibbo, uva passa"},{"mn":"zégu","it":"gioco/partita"},{"mn":"zémitu","it":"gemito, lamento"},{"mn":"zémé","it":"gemere, lamentarsi"},{"mn":"zénaa","it":"gennaio"},{"mn":"zénuciu","it":"ginocchio"},{"mn":"zénucià","it":"ginocchiata"},{"mn":"zénzigia","it":"gengiva"},{"mn":"zénzéu","it":"peperoncino, zenzero"},{"mn":"zénéstra","it":"ginestra"},{"mn":"zénéstrùn","it":"ginestrone"},{"mn":"zénëvru","it":"ginepro"},{"mn":"zénëzé","it":"genovese"},{"mn":"zépa","it":"cuneo, zeppa"},{"mn":"zérbiu","it":"incolto, abbandonato"},{"mn":"zérbìn","it":"zerbino, stuoino"},{"mn":"zéà","it":"gelato, molto freddo"},{"mn":"zënzéu","it":"peperoncino, zenzero"},{"mn":"zìabandiéa","it":"voltagabbana"},{"mn":"zìamëntu","it":"giramento"},{"mn":"zìaotu","it":"giravolta, piroetta"},{"mn":"zìataa","it":"gironzolare"},{"mn":"zìutundu","it":"girotondo"},{"mn":"zògia","it":"giovedì"},{"mn":"zògia","it":"giovedì"},{"mn":"zòzu","it":"sporco"},{"mn":"zòzu","it":"sporco"},{"mn":"zùmbaa","it":"bussare/picchiare"},{"mn":"zü","it":"basso"},{"mn":"zü","it":"giù, da basso"},{"mn":"züaa","it":"giurare"},{"mn":"züamentu","it":"giuramento"},{"mn":"zügaa","it":"giocare/suonare"},{"mn":"zünta","it":"aggiunta, rattoppo"},{"mn":"züntüa","it":"colazione"},{"mn":"zünzé","it":"ungere"},{"mn":"àutu","it":"alto, profondo"},{"mn":"àutunus","it":"autunno"},{"mn":"àva","it":"ape"},{"mn":"àvansaa","it":"avanzare"},{"mn":"àvizaa","it":"avvisare, avvertire"},{"mn":"àvèrtu","it":"aperto"},{"mn":"àvèrtüa","it":"apertura"},{"mn":"àvérsaiu","it":"avversario"},{"mn":"àvértii","it":"avvertire"},{"mn":"àvëna","it":"avena"},{"mn":"àvëssu","it":"abituato, avvezzo"},{"mn":"àzbriviu","it":"impeto, slancio"},{"mn":"àziënda","it":"ditta, esercizio"},{"mn":"àzvèrtu","it":"svelto"},{"mn":"àzén","it":"asino"},{"mn":"àzëë","it":"aceto"},{"mn":"àzünzé","it":"raggiungere"},{"mn":"ùmigliaa","it":"umiliare"},{"mn":"ùnda","it":"onda"},{"mn":"ùndé","it":"dove"},{"mn":"ùnuaa","it":"onorare"},{"mn":"ùnéstu","it":"giusto"},{"mn":"ùrbii","it":"accecare, orbire"},{"mn":"ùrciula","it":"ulcera"},{"mn":"ùrdén","it":"ordine, comando"},{"mn":"ùrdénaa","it":"mandare"},{"mn":"únzé","it":"ungere, lubrificare"},{"mn":"ümëtu","it":"ometto, gruccia"},{"mn":"üngia","it":"unghia"},{"mn":"üngiaa","it":"graffiare"},{"mn":"ünguëntu","it":"unguento, linimento"},{"mn":"ünicu","it":"unico"},{"mn":"üntu","it":"unto, oliato"}];
 //VOCABOLARIO_END
 
 // ── Stato ─────────────────────────────────────────────────────────────────
