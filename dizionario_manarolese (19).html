@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dizionario Manarolese</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sea:#1a4a6b; --sea-light:#2a6a9b; --sand:#e8d5b0; --sand-dark:#c4a97a;
+    --stone:#4a3f35; --foam:#f5f0e8; --accent:#c0392b; --text:#2c2416;
+    --edit-bg:#fffde7; --edit-border:#f9a825;
+    --modified:#e8f5e9; --modified-border:#2e7d32;
+    --new-bg:#e3f2fd; --new-border:#1565c0;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Crimson Pro',Georgia,serif; background:var(--foam); color:var(--text); min-height:100vh; }
+
+  header { background:var(--sea); color:white; padding:36px 24px 28px; text-align:center; position:relative; overflow:hidden; }
+  header::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-45deg,transparent,transparent 10px,rgba(255,255,255,0.03) 10px,rgba(255,255,255,0.03) 20px); }
+  header h1 { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900; position:relative; }
+  header p { font-size:0.95rem; opacity:0.7; margin-top:6px; font-style:italic; position:relative; }
+  .header-wave { width:100%; height:28px; background:var(--foam); clip-path:ellipse(55% 100% at 50% 100%); }
+
+  .controls { padding:12px 16px; background:white; border-bottom:1px solid #e0d8cc; display:flex; gap:8px; align-items:center; flex-wrap:wrap; position:sticky; top:0; z-index:10; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+  .search-wrap { flex:1; min-width:160px; position:relative; }
+  .search-wrap input { width:100%; padding:8px 12px 8px 34px; border:1.5px solid var(--sand-dark); border-radius:30px; font-family:'Crimson Pro',serif; font-size:0.95rem; background:var(--foam); color:var(--text); outline:none; transition:border-color 0.2s; }
+  .search-wrap input:focus { border-color:var(--sea); }
+  .search-wrap::before { content:'⚓'; position:absolute; left:11px; top:50%; transform:translateY(-50%); font-size:0.82rem; opacity:0.5; }
+  .count { font-size:0.82rem; color:#888; white-space:nowrap; }
+  .btn { padding:7px 14px; border:none; border-radius:30px; cursor:pointer; font-family:'Crimson Pro',serif; font-size:0.88rem; transition:all 0.2s; white-space:nowrap; }
+  .btn-sea { background:var(--sea); color:white; }
+  .btn-sea:hover { background:var(--sea-light); }
+  .btn-green { background:#2e7d32; color:white; }
+  .btn-green:hover { background:#388e3c; }
+  .btn-blue { background:#1565c0; color:white; }
+  .btn-blue:hover { background:#1976d2; }
+  .btn-orange { background:#bf360c; color:white; }
+  .btn-orange:hover { background:#e64a19; }
+
+  .alpha-nav { display:flex; gap:4px; padding:8px 16px; background:var(--foam); border-bottom:1px solid #e0d8cc; overflow-x:auto; flex-wrap:wrap; }
+  .alpha-btn { padding:3px 9px; border:1.5px solid var(--sand-dark); border-radius:20px; cursor:pointer; font-family:'Playfair Display',serif; font-size:0.8rem; font-weight:700; color:var(--stone); background:transparent; transition:all 0.15s; text-decoration:none; }
+  .alpha-btn:hover { background:var(--sea); color:white; border-color:var(--sea); }
+
+  main { padding:14px 16px 80px; max-width:860px; margin:0 auto; }
+
+  .letter-section { margin-bottom:8px; }
+  .letter-heading { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; color:var(--sea); border-bottom:2px solid var(--sand-dark); padding-bottom:3px; margin-bottom:6px; display:flex; align-items:baseline; gap:8px; }
+  .letter-heading span { font-family:'Crimson Pro',serif; font-size:0.8rem; font-weight:400; color:#999; }
+
+  .word-card { display:grid; grid-template-columns:150px 1fr auto; align-items:start; gap:8px; padding:8px 10px; border-radius:10px; border-bottom:1px solid rgba(0,0,0,0.06); transition:background 0.15s; }
+  .word-card:hover { background:rgba(26,74,107,0.04); }
+  .word-card.modified { background:var(--modified); border-left:3px solid var(--modified-border); }
+  .word-card.is-new { background:var(--new-bg); border-left:3px solid var(--new-border); }
+
+  .field-wrap { display:flex; flex-direction:column; gap:1px; }
+  .field-label { font-size:0.62rem; text-transform:uppercase; letter-spacing:0.05em; color:#bbb; }
+  .field-input { border:none; background:transparent; font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--sea); width:100%; outline:none; cursor:pointer; border-bottom:1.5px solid transparent; transition:border-color 0.15s; padding:1px 2px; border-radius:3px; }
+  .field-input:focus { border-bottom-color:var(--edit-border); background:var(--edit-bg); cursor:text; }
+  .field-input.it-field { font-family:'Crimson Pro',serif; font-weight:400; font-style:italic; color:var(--stone); font-size:0.93rem; }
+  .field-input.pron-field { font-family:'Crimson Pro',serif; font-weight:400; color:#888; font-size:0.82rem; }
+
+  .card-right { display:flex; align-items:center; gap:5px; padding-top:4px; }
+  .btn-play { width:30px; height:30px; border-radius:50%; border:1.5px solid var(--sea); background:white; color:var(--sea); cursor:pointer; font-size:0.78rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.15s; padding:0; }
+  .btn-play:hover { background:var(--sea); color:white; }
+  .btn-play.playing { background:var(--accent); border-color:var(--accent); color:white; animation:pulse 0.8s infinite; }
+  .btn-del { width:24px; height:24px; border-radius:50%; border:1.5px solid #ccc; background:white; color:#aaa; cursor:pointer; font-size:0.65rem; display:flex; align-items:center; justify-content:center; transition:all 0.15s; padding:0; }
+  .btn-del:hover { border-color:var(--accent); color:var(--accent); }
+
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+
+  /* Add new word form */
+  .add-form { background:white; border:2px dashed var(--sea-light); border-radius:14px; padding:16px; margin-bottom:16px; }
+  .add-form h3 { font-family:'Playfair Display',serif; color:var(--sea); margin-bottom:10px; font-size:1.1rem; }
+  .add-form .row { display:flex; gap:10px; flex-wrap:wrap; }
+  .add-form input { flex:1; min-width:120px; padding:8px 12px; border:1.5px solid var(--sand-dark); border-radius:8px; font-family:'Crimson Pro',serif; font-size:0.95rem; outline:none; }
+  .add-form input:focus { border-color:var(--sea); }
+  .add-form input::placeholder { color:#ccc; font-style:italic; }
+
+  .info-bar { background:#e3f2fd; border:1px solid #90caf9; border-radius:10px; padding:10px 14px; margin-bottom:12px; font-size:0.88rem; color:#1565c0; line-height:1.5; }
+  .info-bar strong { display:block; margin-bottom:3px; }
+  .stats-bar { background:white; border:1px solid #e0d8cc; border-radius:10px; padding:10px 14px; margin-bottom:12px; display:flex; gap:20px; flex-wrap:wrap; }
+  .stat { display:flex; flex-direction:column; }
+  .stat-val { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--sea); }
+  .stat-lbl { font-size:0.72rem; color:#aaa; }
+  .no-results { text-align:center; padding:60px 20px; color:#aaa; font-style:italic; font-size:1.1rem; }
+  footer { text-align:center; padding:20px; color:#aaa; font-size:0.82rem; border-top:1px solid #e0d8cc; }
+  footer a { color:var(--sea-light); text-decoration:none; }
+
+  @media(max-width:540px) {
+    .word-card { grid-template-columns:110px 1fr auto; }
+    .field-input { font-size:0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚓ Dizionario Manarolese</h1>
+  <p>Dialetto delle Cinque Terre · Manarola, La Spezia</p>
+</header>
+<div class="header-wave"></div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Cerca voce o traduzione..." oninput="filtra()">
+  </div>
+  <span class="count" id="count"></span>
+  <button class="btn btn-sea" onclick="speakAll()">🔊 Leggi tutto</button>
+  <button id="btn-gh-save" class="btn btn-blue" onclick="salvaSuGitHub()" style="background:#24292f">☁️ Salva su GitHub</button>
+  <button class="btn btn-blue" onclick="salvaFile()" title="Backup locale">💾 Scarica copia</button>
+  <button class="btn" onclick="reimpostaToken()" title="Cambia token GitHub" style="background:#eee;color:#666;font-size:0.85em">🔑</button>
+  <button class="btn btn-orange" onclick="resetAll()" id="btn-reset" style="display:none">↩ Ripristina tutto</button>
+</div>
+
+<div class="alpha-nav" id="alphaNav"></div>
+<main id="main"></main>
+
+<footer>
+  <p>Dizionario Manarolese · <a href="https://linguaequiz.com">LinguaeQuiz</a></p>
+  <p style="margin-top:4px;font-size:0.75rem;">Clicca su qualsiasi campo per modificarlo · Aggiungi nuove voci · Salva il file aggiornato e mandamelo</p>
+</footer>
+
+<script>
+// ── DATI (modificati automaticamente al salvataggio) ─────────────────────
+//VOCABOLARIO_START
+const VOCABOLARIO = [{"mn":"avarià","it":"avariato"},{"mn":"avee","it":"avere","pron":"aveee"},{"mn":"nasiun","it":"nazione","pron":"nassiun"},{"mn":"negru","it":"nero"},{"mn":"nàiza","it":"narice","pron":"nàisa"},{"mn":"nànsi","it":"anzi","pron":"nàansi"},{"mn":"nànti","it":"davanti"},{"mn":"nànëtu","it":"nano"},{"mn":"nàpia","it":"nappa","pron":"nàapia"},{"mn":"nàzièlu","it":"nasello"},{"mn":"nàzu","it":"naso","pron":"nàazu"},{"mn":"nècu","it":"arrabbiato"},{"mn":"nédaa","it":"nuotare","pron":"nédaaa"},{"mn":"nédu","it":"nuoto","pron":"néedu"},{"mn":"négaa","it":"negare","pron":"négaaa"},{"mn":"négosciu","it":"negozio","pron":"négoosciu"},{"mn":"sciancà","it":"sciancato","pron":"s'ciancà"},{"mn":"sciancùn","it":"strattone","pron":"s'ciancùn"},{"mn":"sciatà","it":"uguale","pron":"s'ciatà"},{"mn":"sciàfer","it":"autista","pron":"sciàfeer"},{"mn":"sciàfu","it":"schiaffo","pron":"s'ciàfu"},{"mn":"sciàlaa","it":"scialacquare","pron":"s'ciàlaaà"},{"mn":"scié","it":"cielo"},{"mn":"sciétu","it":"schietto","pron":"s'ciétu"},{"mn":"sciòpu","it":"fucile","pron":"s'ciòpu"},{"mn":"scògiu","it":"scoglio"},{"mn":"scòpu","it":"scopo"},{"mn":"silënsciu","it":"silenzioso"},{"mn":"sinciéu","it":"sincero"},{"mn":"sindicu","it":"sindaco"},{"mn":"smùntaa","it":"smontare","pron":"smùntaaa"},{"mn":"sìma","it":"cima","pron":"sìima"},{"mn":"sìmia","it":"scimmia","pron":"sìimia"},{"mn":"sìula","it":"cipolla","pron":"sìuula"},{"mn":"sòciu","it":"socio","pron":"sociu"},{"mn":"sòcu","it":"ciocco","pron":"socu"},{"mn":"sòdi","it":"soldi","pron":"soodi"},{"mn":"sòdu","it":"sodo","pron":"sodu"},{"mn":"sòfégu","it":"afa","pron":"soofegu"},{"mn":"sòlitu","it":"solito","pron":"soolitu"},{"mn":"sòpu","it":"zoppo","pron":"soopu"},{"mn":"tichiu","it":"tic","pron":"tiichiu"},{"mn":"tifu","it":"tifo"},{"mn":"tigiu","it":"tiglio","pron":"tiigiu"},{"mn":"tigna","it":"taccagno"},{"mn":"tignuzu, tignusu","it":"avaro","pron":"tignusu"},{"mn":"timunié","it":"timoniere"},{"mn":"tina","it":"tino"},{"mn":"tintüa","it":"tintura, colorante","pron":"tintüüa"},{"mn":"topa","it":"toppa"},{"mn":"tirchiu","it":"tirchio"},{"mn":"tiénèu","it":"tenero","pron":"tiéenèu"},{"mn":"tiévédu","it":"tiepido","pron":"tiéevédu"},{"mn":"togu","it":"togo","pron":"tooogu"},{"mn":"tradisciùn","it":"tradizione"},{"mn":"tràbalaa","it":"traballare"},{"mn":"tràcaa","it":"attraccare","pron":"tràcaaa"},{"mn":"tràcanaa","it":"tracannare","pron":"tràcanaaa"},{"mn":"tràcia","it":"traccia","pron":"tràacia"},{"mn":"tràdii","it":"tradire"},{"mn":"tràfégu","it":"traffico","pron":"tra'féguu"},{"mn":"tràgitu","it":"tragitto"},{"mn":"tìmùn","it":"timone","pron":"timùn"},{"mn":"tòcu","it":"pezzo"},{"mn":"tòrtu","it":"torto"},{"mn":"tòru","it":"toro"},{"mn":"tòstu","it":"tosto"},{"mn":"tòségu","it":"tossico","pron":"tòséguu"},{"mn":"tòtanu","it":"totano"},{"mn":"ümile","it":"umile","pron":"üümile"},{"mn":"unéstà","it":"onestà","pron":"uunéstà"},{"mn":"vigné","it":"vigneti","pron":"vigneé"},{"mn":"vila","it":"villa"},{"mn":"vilàn","it":"villano"},{"mn":"vinsé","it":"vincere","pron":"vinse"},{"mn":"vintena","it":"ventina"},{"mn":"vinti","it":"venti"},{"mn":"vinëtu","it":"vinetto"},{"mn":"viraa","it":"virare"},{"mn":"virtü","it":"virtù","pron":"virtùü"},{"mn":"visciu","it":"vizio"},{"mn":"vistaa","it":"avvistare","pron":"vistaaa"},{"mn":"vita","it":"vita"},{"mn":"viédràda","it":"vetrata","pron":"vìedràda"},{"mn":"viérdùn","it":"verdone","pron":"vìérdùn"},{"mn":"viùlensa","it":"violenza","pron":"vìùlensa"},{"mn":"viùlin","it":"violino","pron":"vìùlin"},{"mn":"viùlëntu","it":"violento","pron":"vìùlëntu"},{"mn":"vree","it":"volere","pron":"vvreee"},{"mn":"vrëëbën","it":"amare","pron":"vvreee bën"},{"mn":"vuluntà","it":"volontà","pron":"vuluntaà"},{"mn":"vurcàn","it":"vulcano","pron":"vurcàan"},{"mn":"vutasciùn","it":"votazioni","pron":"vutasciùun"},{"mn":"vìgna","it":"vite","pron":"vìigna"},{"mn":"vìn","it":"vino"},{"mn":"vìnëta","it":"vinetta"},{"mn":"vìpéra","it":"vipera","pron":"vìpera"},{"mn":"vìsciaa","it":"viziare","pron":"vissiaa"},{"mn":"vìtèlu","it":"vitello","pron":"vitèlu"},{"mn":"vìvé","it":"vivere"},{"mn":"vìédru","it":"vetro"},{"mn":"vìégiu","it":"viaggio/gita"},{"mn":"vìérdu","it":"verde"},{"mn":"vìùlëta","it":"viola"},{"mn":"vògia","it":"voglia"},{"mn":"vòrtu","it":"volto"},{"mn":"vùaa","it":"volare","pron":"vùuaaa"},{"mn":"vùcabulaiu","it":"vocabolario"},{"mn":"vùgaa","it":"vogare"},{"mn":"vùgiaa","it":"avvolgere","pron":"vùgiaaa"},{"mn":"vùtaa","it":"votare","pron":"vùtaaa"},{"mn":"vùza","it":"voce","pron":"vùsa"},{"mn":"zanbaiùn","it":"zabaione"},{"mn":"zbilèrciu","it":"strabico","pron":"sbilèr'ciu"},{"mn":"zbiléncu","it":"sbilenco"},{"mn":"zbiécu","it":"sbieco"},{"mn":"zbragiùn","it":"chiacchierone"},{"mn":"zbrilà","it":"attorcigliato"},{"mn":"zbràgiaa","it":"sbraitare","pron":"zbràgiaaa"},{"mn":"zbràgiu","it":"urlo"},{"mn":"zbrùgiaa","it":"sbrogliare","pron":"zbrùgiaaa"},{"mn":"zbrùgiasé","it":"sbrogliarsi","pron":"zbrùgiaasé"},{"mn":"zbrùzaa","it":"cogliere acerbo","pron":"zbrùsaaa"},{"mn":"zbulinà","it":"trasandato"},{"mn":"zbàgiu","it":"sbaglio","pron":"zbaàgiu"},{"mn":"zbàramentu","it":"sbarramento","pron":"zbaàramentu"},{"mn":"zbàssaa","it":"abbassare","pron":"zbassaa"},{"mn":"zbàté","it":"sbattere","pron":"zbaàte"},{"mn":"zbècu","it":"bercio","pron":"zbeècu"},{"mn":"zbèru","it":"strappo","pron":"zbeèru"},{"mn":"zbézu","it":"vuoto"},{"mn":"zbìru","it":"poliziotto"},{"mn":"zbùcaa","it":"sbucare","pron":"zbucaaa"},{"mn":"zbùgii","it":"sbollire","pron":"sbugii"},{"mn":"zbùrii","it":"scacciare","pron":"zburii"},{"mn":"zbùtaa","it":"sbottare","pron":"sbutaaa"},{"mn":"zbùzà","it":"sbuzzato","pron":"zbusaà"},{"mn":"zbùzardaa","it":"sbugiardare","pron":"zbusardaà"},{"mn":"zbüdélaa","it":"sbudellare","pron":"zbuüdélaaa"},{"mn":"zbüfaa","it":"sbuffare","pron":"zbüfaaa"},{"mn":"zbüzaa","it":"sbuzzare","pron":"zbüzaaa"},{"mn":"zemé","it":"gemere","pron":"zemée"},{"mn":"zeu","it":"zero","pron":"zeeuu"},{"mn":"zeùn","it":"gelone"},{"mn":"zgaagò","it":"lumaca","pron":"sgaagò"},{"mn":"zganassùn","it":"sganascione"},{"mn":"zgarbélà","it":"escoriato","pron":"zgarbelaà"},{"mn":"zghigiada","it":"scivolone","pron":"sghiigiàada"},{"mn":"zghigiuëntu","it":"scivoloso","pron":"sghigiuëntu"},{"mn":"zghignassaa","it":"sghignazzare","pron":"zghignassaaa"},{"mn":"zghìgiaa","it":"scivolare","pron":"sghiggiaaa"},{"mn":"zghìnda","it":"scansafatiche","pron":"sghinda"},{"mn":"zghìndaa","it":"scansare","pron":"zghindaaa"},{"mn":"zghìribissu","it":"schiribizzo","pron":"sghiribissu"},{"mn":"zghìu","it":"ghiro","pron":"sghiiu"},{"mn":"zgnèra","it":"pernacchia","pron":"sgneera"},{"mn":"zgnìfra","it":"carota","pron":"sgniifra"},{"mn":"zgnòcua","it":"ponfo","pron":"zgnocua"},{"mn":"zgrinfia","it":"grinfia"},{"mn":"zgràfignaa","it":"sgraffignare","pron":"zgrafignaaa"},{"mn":"zgrëndia","it":"fessura"},{"mn":"zgrùstaa","it":"scrostare, togliere l'intonaco","pron":"zgrùstaaa"},{"mn":"zgrüpaa","it":"districare","pron":"zgrüpaaa"},{"mn":"zgrüzu","it":"grezzo"},{"mn":"zgubùn","it":"sgobbone","pron":"zgubuùn"},{"mn":"zguà","it":"fradicio","pron":"zguàa"},{"mn":"zguàraa","it":"sgarrare"},{"mn":"zguàru","it":"strappo"},{"mn":"zguàssa","it":"guazza","pron":"zguàassa"},{"mn":"zguàssaa","it":"sguazzare"},{"mn":"zgànassasé","it":"sganasciarsi","pron":"sganassase"},{"mn":"zgànzia","it":"scaffale","pron":"sgànzia"},{"mn":"zgàrbu","it":"sgarbo","pron":"sgarbu"},{"mn":"zgàrbéladüa","it":"escoriazione","pron":"sgarbeladüua"},{"mn":"zgàrbélasé","it":"escoriarsi","pron":"sgarbelàsse"},{"mn":"zgàrfignaa","it":"graffiare","pron":"sgarfignaaa"},{"mn":"zgàrzuèla","it":"ragazzina","pron":"sgàrzuèla"},{"mn":"zgùaa","it":"gocciolare","pron":"sgùaa"},{"mn":"zgùagé","it":"agli sgoccioli","pron":"sgùagé"},{"mn":"zgùaldrina","it":"sgualdrina","pron":"sgùaldrìna"},{"mn":"zgùasé","it":"bagnarsi","pron":"sgùaasse"},{"mn":"zgùbaa","it":"sgobbare","pron":"sgùbaa"},{"mn":"zgüssaa","it":"sgusciare","pron":"sgüssaaa"},{"mn":"zgüssà","it":"sgusciato","pron":"sgüssà"},{"mn":"ziaa","it":"girare","pron":"ziaaa"},{"mn":"ziasé","it":"girarsi, voltarsi","pron":"ziaasé"},{"mn":"ziatùn","it":"giramondo"},{"mn":"zietu","it":"giretto"},{"mn":"zinbèlu","it":"zimbello","pron":"zinbelu"},{"mn":"zingu","it":"zinco"},{"mn":"zingà","it":"zincato"},{"mn":"zinzin","it":"riccio di mare"},{"mn":"zitélùn","it":"zitellone","pron":"ziteluùn"},{"mn":"ziu","it":"giro","pron":"ziiu"},{"mn":"zizua","it":"giuggiola","pron":"ziizua"},{"mn":"zizània","it":"zizzania","pron":"zizania"},{"mn":"zlargaa","it":"allargare","pron":"slargaaa"},{"mn":"zlèpa","it":"grossa porzione, ceffone","pron":"slèpa"},{"mn":"zlüngasé","it":"allungarsi","pron":"zlüngaase"},{"mn":"zmalissià","it":"smaliziato, accorto"},{"mn":"zmangiazùn","it":"prurito","pron":"smangiazùn"},{"mn":"zmangià","it":"consumato, abraso","pron":"smangiàa"},{"mn":"zmurtaa","it":"smorzare","pron":" smuurtàaa"},{"mn":"zmurtà","it":"spento","pron":"smuurtàa"},{"mn":"zmàciaa","it":"smacchiare","pron":"smàciàa"},{"mn":"zmàdunaa","it":"imprecare, bestemmiare","pron":"smàdunaaa"},{"mn":"zmàgrii","it":"dimagrire","pron":"smàgrii"},{"mn":"zmàmaa","it":"andar via velocemente","pron":"smàmaa"},{"mn":"zmàngiaa","it":"prudere, consumare","pron":"smangia"},{"mn":"zmànéciaa","it":"armeggiare","pron":"smànéciaaa"},{"mn":"zmànégadüa","it":"destrezza","pron":"smànégadüa"},{"mn":"zmèzaa","it":"dimezzare","pron":"smesaaa"},{"mn":"zmévé","it":"muovere","pron":"smévé"},{"mn":"zmëté","it":"smettere"},{"mn":"zmòrtu","it":"spento","pron":"smòrtu"},{"mn":"zmòssa","it":"mossa","pron":"smossa"},{"mn":"zmüciaa","it":"dilapidare","pron":"smüciaaa"},{"mn":"zugnu","it":"giugno","pron":"zuniu"},{"mn":"zuncu","it":"giunco"},{"mn":"zuzùn","it":"zozzone"},{"mn":"zuàru","it":"scoiattolo"},{"mn":"zuén","it":"giovane"},{"mn":"zuéna","it":"giovane"},{"mn":"zuénotu","it":"giovanotto"},{"mn":"zuéntù","it":"gioventù","pron":"zuentuù"},{"mn":"zvàlizaa","it":"svaligiare","pron":"svàlizaa"},{"mn":"zvàpuraa","it":"evaporare","pron":"vàpuraa"},{"mn":"zvàriaa","it":"vaneggiare","pron":"svàriaa"},{"mn":"zvéaa","it":"volare","pron":"svéaa"},{"mn":"zvégiaa","it":"allarme/sveglia","pron":"zvégia"},{"mn":"zvégiu","it":"sveglio, scaltro, smaliziato"},{"mn":"zvégnii","it":"venire","pron":"svénii"},{"mn":"zvéu","it":"volo","pron":"svéu"},{"mn":"zvìdaa","it":"svitare","pron":"zvìdaaa"},{"mn":"zà","it":"già","pron":"zàa"},{"mn":"zàlu","it":"giallo"},{"mn":"zàvura","it":"zavorra"},{"mn":"zèrbiu","it":"incolto","pron":"zerbiu"},{"mn":"zètu","it":"detriti","pron":"zetu"},{"mn":"zéaa","it":"gelare","pron":"zéaaa"},{"mn":"zébibu","it":"zibibbo"},{"mn":"zégu","it":"gioco","pron":"zéguu"},{"mn":"zémitu","it":"gemito"},{"mn":"zémé","it":"gemere, lamentarsi","pron":"zémee"},{"mn":"zénaa","it":"gennaio","pron":"zénaaa"},{"mn":"zénuciu","it":"ginocchio"},{"mn":"zénucià","it":"ginocchiata","pron":"zénuciàa"},{"mn":"zénzigia","it":"gengiva","pron":"zénziigia"},{"mn":"zénzéu","it":"peperoncino, zenzero"},{"mn":"zénéstra","it":"ginestra","pron":"zénstra"},{"mn":"zénéstrùn","it":"ginestrone","pron":"zenestrùn"},{"mn":"zénëvru","it":"ginepro"},{"mn":"zénëzé","it":"genovese","pron":"zénÊizé"},{"mn":"zérbìn","it":"zerbino","pron":"zerbiìn"},{"mn":"zéà","it":"gelato","pron":"zéàa"},{"mn":"zìabandiéa","it":"voltagabbana"},{"mn":"zìamëntu","it":"giramento"},{"mn":"zìaotu","it":"giravolta"},{"mn":"zìataa","it":"gironzolare","pron":"zìaataa"},{"mn":"zìutundu","it":"girotondo"},{"mn":"zògia","it":"giovedì"},{"mn":"zòzu","it":"sporco"},{"mn":"zùmbaa","it":"picchiare"},{"mn":"zü","it":"giù, da basso","pron":"züu"},{"mn":"züaa","it":"giurare","pron":"züaaa"},{"mn":"züamentu","it":"giuramento"},{"mn":"zügaa","it":"giocare"},{"mn":"zünta","it":"aggiunta"},{"mn":"züntüa","it":"giunture","pron":"züntüua"},{"mn":"zünzé","it":"aggiungere"},{"mn":"àutu","it":"alto"},{"mn":"àutunu","it":"autunno"},{"mn":"àva","it":"ape"},{"mn":"àvansaa","it":"avanzare"},{"mn":"àvizaa","it":"avvisare","pron":"avisàa"},{"mn":"àvèrtu","it":"aperto"},{"mn":"àvèrtüa","it":"apertura"},{"mn":"àvérsaiu","it":"avversario"},{"mn":"àvértii","it":"avvertire"},{"mn":"àvëna","it":"avena"},{"mn":"àvëssu","it":"avvezzo"},{"mn":"àzbriviu","it":"slancio","pron":"àsbriviu"},{"mn":"àziënda","it":"azienda","pron":"àsiënda"},{"mn":"àzvèrtu","it":"svelto","pron":"àsvèrtu"},{"mn":"àzén","it":"asino","pron":"àsén"},{"mn":"àzëë","it":"aceto"},{"mn":"àzünzé","it":"raggiungere"},{"mn":"ùmigliaa","it":"umiliare","pron":"ùmigliaaa"},{"mn":"ùnda","it":"onda"},{"mn":"ùndé","it":"dove","pron":"uunde"},{"mn":"ùnuaa","it":"onorare","pron":"unuaaa"},{"mn":"ùnéstu","it":"onesto"},{"mn":"ùrbii","it":"accecare","pron":"urbii"},{"mn":"ùrciula","it":"ulcera","pron":"ùurciula"},{"mn":"ùrdén","it":"ordine"},{"mn":"ùrdénaa","it":"ordinare","pron":"ùrdenàa"},{"mn":"ünzé","it":"ungere, lubrificare","pron":"üunze"},{"mn":"ümëtu","it":"ometto"},{"mn":"üngia","it":"unghia"},{"mn":"üngiaa","it":"graffiare","pron":"üngiaaa"},{"mn":"ünguëntu","it":"unguento"},{"mn":"ünicu","it":"unico","pron":"üunicu"},{"mn":"üntu","it":"unto"},{"mn":"aagnu","it":"pesce ragno, trancina","_new":true},{"mn":"àoca","it":"gabbiano","_new":true},{"mn":"bùnitu","it":"tombarello, pesce di mare","_new":true},{"mn":"cardain","it":"cardellino","_new":true},{"mn":"cùralu","it":"corallo; bottarga della cicala di mare","_new":true},{"mn":"cràva","it":"capra; (anche) impalcatura per sollevamento","_new":true},{"mn":"cràvëtu","it":"capretto","_new":true},{"mn":"crou","it":"corvo; (fig.) prete in senso dispregiativo","_new":true},{"mn":"darfin","it":"delfino","_new":true},{"mn":"éufògiu","it":"alloro","_new":true},{"mn":"fagian","it":"fagiano","_new":true},{"mn":"fàrchetu","it":"falco, poiana, rapace locale","_new":true},{"mn":"franghié","it":"fringuello","_new":true},{"mn":"lumaga","it":"lumaca","_new":true},{"mn":"lümagùn","it":"lumacone; (fig.) persona lenta e viscida","_new":true},{"mn":"luassu","it":"spigola, branzino","_new":true},{"mn":"luduùn","it":"allodola","_new":true},{"mn":"miemu","it":"mémola, pesce di mare","_new":true},{"mn":"miérlu rucaéé","it":"passero solitario","_new":true},{"mn":"minin","it":"gattino","_new":true},{"mn":"sàmpa dé càvalu","it":"arca di Noè, mollusco bivalve peloso","_new":true},{"mn":"sànguin","it":"fungo sanguigno (lattario delizioso)","_new":true},{"mn":"sanguëta","it":"sanguisuga; (fig.) persona noiosa","_new":true},{"mn":"sànpiéu","it":"pesce sanpietro","_new":true},{"mn":"sànsa","it":"zanzara","_new":true},{"mn":"sàrdégnolu","it":"sardo","_new":true},{"mn":"sàrgu","it":"sarago, pesce di mare","_new":true},{"mn":"sarpa","it":"salpa, boccadoro, pesce di mare","_new":true},{"mn":"sarpëntu","it":"serpente; (fig.) persona sfuggente","_new":true},{"mn":"sépia","it":"seppia","_new":true},{"mn":"sèrvu dé lissa","it":"porcino di leccio","_new":true},{"mn":"sèrvu","it":"servo; (anche) fungo porcino","_new":true},{"mn":"sigaa","it":"cicala; canocchia, cicala di mare","_new":true},{"mn":"tànagia","it":"tenaglia; chela di crostaceo","_new":true},{"mn":"tànagiùn","it":"grossa chela; cervo volante","_new":true},{"mn":"tàgiadidi","it":"tarantola nostrale","_new":true},{"mn":"tavàn","it":"tafano, moscone dei bovini","_new":true},{"mn":"tétavaca","it":"tettavacca, varietà d'uva nera","_new":true},{"mn":"tunu","it":"tonno","_new":true},{"mn":"turca","it":"letto singolo, branda","_new":true},{"mn":"tùrdèlu","it":"tordo, pesce di mare","_new":true},{"mn":"tùrdena","it":"tordella, uccello migratore","_new":true},{"mn":"tùrdu","it":"tordo bottaccio; (fig.) sciocco","_new":true},{"mn":"tùrtuèla","it":"tortora","_new":true},{"mn":"vèspa","it":"vespa","_new":true},{"mn":"véspùn","it":"calabrone","_new":true},{"mn":"zuanin","it":"piccoli vermi del formaggio o della frutta","_new":true},{"mn":"ziguiéla","it":"donzella, pesce di mare","_new":true},{"mn":"arbaéa","it":"arbarola, varietà d'uva bianca simile alla trebbiana","_new":true},{"mn":"refursà","it":"vino rinforzato, sciacchetrà","_new":true},{"mn":"vérméntin","it":"vermentino, varietà d'uva bianca","_new":true},{"mn":"brüzapagiaa","it":"\"bruciapaglia\", varietà di uva bianca simile al vermentino","_new":true},{"mn":"bùnféraa","it":"varietà di uva nera","_new":true},{"mn":"brunzin","it":"bronzino, varietà di cavolo","_new":true},{"mn":"bùraza","it":"borragine","_new":true},{"mn":"brùgëti","it":"germogli laterali del cavolo","_new":true},{"mn":"bùrgai","it":"castagne lesse pelate","_new":true},{"mn":"bùconica","it":"cibo, vitto","_new":true},{"mn":"còu","it":"cavolo","_new":true},{"mn":"còufiuu","it":"cavolfiore","_new":true},{"mn":"cupéta","it":"tazza","_new":true},{"mn":"cupétina","it":"tazzina da caffè","_new":true},{"mn":"cupin","it":"coppino, mestolino","_new":true},{"mn":"damangiaa","it":"cibo, vitto","_new":true},{"mn":"damizana","it":"damigiana","_new":true},{"mn":"damizanéta","it":"piccola damigiana","_new":true},{"mn":"faina","it":"farina","_new":true},{"mn":"fainada","it":"farinata","_new":true},{"mn":"fainassu","it":"crusca; (anche, dispr.) fornaio","_new":true},{"mn":"frégagia","it":"frittura di paranza","_new":true},{"mn":"luganéga","it":"salsiccia","_new":true},{"mn":"lugëzé","it":"lugliese, uva precoce di fine luglio","_new":true},{"mn":"micheta","it":"sfilatino, tipo di pane","_new":true},{"mn":"pumarola","it":"sugo di pomodoro","_new":true},{"mn":"pumata","it":"pomodoro; (anche) pomata, unguento","_new":true},{"mn":"pugnata","it":"pentola","_new":true},{"mn":"pugnatin","it":"pentolino","_new":true},{"mn":"pumu","it":"melo, mela","_new":true},{"mn":"pumugranà","it":"albero e frutto del melograno","_new":true},{"mn":"pumétu","it":"mela di piccola taglia","_new":true},{"mn":"pulenta","it":"polenta","_new":true},{"mn":"puléntin","it":"bolentino, lenza da pesca con più ami","_new":true},{"mn":"pumpa","it":"pompa","_new":true},{"mn":"samurca","it":"parte non oleosa della polpa delle olive","_new":true},{"mn":"sànsa","it":"sansa, scarto della frangitura delle olive","_new":true},{"mn":"sigaétu","it":"accetta","_new":true},{"mn":"setrùn","it":"arancio","_new":true},{"mn":"sezeu","it":"cece","_new":true},{"mn":"tagiaìn","it":"tagliatella, fettuccina","_new":true},{"mn":"tucu","it":"sugo, ragù","_new":true},{"mn":"tüchéfisu","it":"stoccafisso","_new":true},{"mn":"turùn","it":"torrone","_new":true},{"mn":"tùrta","it":"torta salata; (fig.) essere in società o combutta","_new":true},{"mn":"zézéa","it":"suocera","_new":true},{"mn":"zézéu","it":"suocero","_new":true},{"mn":"cianciolu","it":"barca per la pesca del pesce azzurro","_new":true},{"mn":"ciàzié","it":"vento di nord-est, grecale","_new":true},{"mn":"cùrpudémaa","it":"onda anomala, cavallone marino","_new":true},{"mn":"Còrséga","it":"Corsica","_new":true},{"mn":"còrséghina","it":"neve portata dal vento di nord-ovest; varietà di olive","_new":true},{"mn":"cùrassa","it":"corazza, carapace","_new":true},{"mn":"main","it":"marino, salmastro","_new":true},{"mn":"màina","it":"marina","_new":true},{"mn":"màinaa","it":"marinaio","_new":true},{"mn":"mainaa","it":"ammainare, calare","_new":true},{"mn":"màistralé","it":"maestrale, vento di nord-ovest","_new":true},{"mn":"màëta","it":"maretta, mare mosso","_new":true},{"mn":"mézumainaa","it":"gaffa, pertica munita di gancio","_new":true},{"mn":"minolu","it":"barcone da carico","_new":true},{"mn":"missa","it":"puntata, posta in gioco","_new":true},{"mn":"pupa","it":"poppa, parte posteriore del natante","_new":true},{"mn":"puntu","it":"punto","_new":true},{"mn":"puntun","it":"pontone, zatterone","_new":true},{"mn":"réogiu","it":"rotolo, matassa, bobina; getto d'acqua","_new":true},{"mn":"remu","it":"remo","_new":true},{"mn":"rémà","it":"colpo di remo, vogata","_new":true},{"mn":"rémaa","it":"remare, vogare","_new":true},{"mn":"réssagiu","it":"rezzaglio, tipo di rete","_new":true},{"mn":"sandalin","it":"sandolino, imbarcazione simile alla canoa","_new":true},{"mn":"sàrpanté","it":"mozzo, marinaio semplice","_new":true},{"mn":"sarpaa","it":"issare, salpare; partire con masserizie","_new":true},{"mn":"strepiu","it":"stroppo, legaccio che tiene il remo allo scalmo","_new":true},{"mn":"stupinaa","it":"chiudere, sigillare, calafatare, tappare","_new":true},{"mn":"tùnélata","it":"tonnellata","_new":true},{"mn":"tùné","it":"tonnellata","_new":true},{"mn":"tùtanaa","it":"pescare totani","_new":true},{"mn":"tutanaà","it":"attrezzo per la pesca del totano","_new":true},{"mn":"véntàssu","it":"vento teso e fastidioso","_new":true},{"mn":"vénta","it":"forte raffica di vento","_new":true},{"mn":"véita","it":"vuotare","_new":true},{"mn":"zbùrgaa","it":"fendere con la prora","_new":true},{"mn":"zbùrdézaa","it":"bordeggiare, navigare controvento a vela","_new":true},{"mn":"bùcabulaiu","it":"vocabolario","_new":true},{"mn":"bùtégaa","it":"bottegaio, commerciante","_new":true},{"mn":"bùtiéga","it":"bottega","_new":true},{"mn":"cùntadin","it":"contadino","_new":true},{"mn":"fàlégnamu","it":"falegname","_new":true},{"mn":"fàfügiaa","it":"frugare, rovistare","_new":true},{"mn":"frantuàn","it":"frantoiano, lavorante del frantoio","_new":true},{"mn":"fràtassu","it":"fratazzo, attrezzo per lisciare l'intonaco","_new":true},{"mn":"fàmigiu","it":"famiglio, servitore, domestico","_new":true},{"mn":"magnan","it":"stagnino, calderaio (aggiusta-pentole)","_new":true},{"mn":"màgnacia","it":"protettore di prostitute","_new":true},{"mn":"màistru","it":"maestro, artigiano","_new":true},{"mn":"prévostu","it":"prevosto, parroco","_new":true},{"mn":"prépostu","it":"finanziere, doganiere","_new":true},{"mn":"prétuu","it":"pretore","_new":true},{"mn":"priuu","it":"priore","_new":true},{"mn":"préfésuu","it":"sapientone, professore","_new":true},{"mn":"questüin","it":"poliziotto","_new":true},{"mn":"sànpugnaa","it":"zampognaro","_new":true},{"mn":"sàrtu","it":"sarto","_new":true},{"mn":"savatà","it":"colpo dato con una ciabatta","_new":true},{"mn":"savatùn","it":"ciabattone","_new":true},{"mn":"sérvituu","it":"servitore, domestico","_new":true},{"mn":"tabachìn","it":"tabaccaio","_new":true},{"mn":"vétrinaiu","it":"veterinario","_new":true},{"mn":"viédraa","it":"vetraio","_new":true},{"mn":"àbélinà","it":"sciocco, stupido","_new":true},{"mn":"ambriagùn","it":"ubriacone, alcolizzato","_new":true},{"mn":"bàrbatélu","it":"sbarbatello, giovincello","_new":true},{"mn":"bùcalarga","it":"chiacchierone (lett. \"bocca larga\")","_new":true},{"mn":"bùcassa","it":"malalingua","_new":true},{"mn":"büza","it":"epa, pancia","_new":true},{"mn":"büzëta","it":"epa, ventre gonfio","_new":true},{"mn":"büzustrepu","it":"mangione, crapulone","_new":true},{"mn":"cervèlu","it":"cervello, giudizio, intelligenza","_new":true},{"mn":"ciantapufi","it":"persona che fa molti debiti","_new":true},{"mn":"ciapaùn","it":"parete di roccia liscia e verticale","_new":true},{"mn":"ciastrùn","it":"impiastricciamento; (di persona) pasticcione","_new":true},{"mn":"ciatéluzu","it":"persona sporca e trasandata","_new":true},{"mn":"criticùn","it":"persona perennemente critica","_new":true},{"mn":"crücu","it":"tedesco, austriaco (dispregiativo)","_new":true},{"mn":"cùpua","it":"nuca","_new":true},{"mn":"cüu dé vìsta","it":"miope (lett. \"corto di vista\")","_new":true},{"mn":"fàcia","it":"faccia, viso","_new":true},{"mn":"fàcia (én)","it":"di fronte","_new":true},{"mn":"fànté","it":"bambino, fanciullo, ragazzo","_new":true},{"mn":"fànteta","it":"bambina","_new":true},{"mn":"fartabutu","it":"farabutto, mascalzone","_new":true},{"mn":"fanfarùn","it":"fanfarone","_new":true},{"mn":"lidaèssu","it":"vanaglorioso","_new":true},{"mn":"ludru","it":"ghiottone, gran mangiatore","_new":true},{"mn":"mài","it":"marito","_new":true},{"mn":"malandrin","it":"malfattore","_new":true},{"mn":"màmalücu","it":"persona stupida e ignorante","_new":true},{"mn":"mànégordu","it":"manigoldo","_new":true},{"mn":"mìzéu","it":"misero, povero, meschino","_new":true},{"mn":"mirsa","it":"milza","_new":true},{"mn":"miùn","it":"persona asociale, guardone","_new":true},{"mn":"pumélùn","it":"persona con ritardo mentale, sciocco","_new":true},{"mn":"puméti","it":"guance, zigomi","_new":true},{"mn":"rén","it":"rene, lombo","_new":true},{"mn":"sànbranca","it":"ladruncolo, cleptomane","_new":true},{"mn":"sànfasùn","it":"persona alla buona, spensierata","_new":true},{"mn":"sigi","it":"tempie","_new":true},{"mn":"spilùngùn","it":"spilungone","_new":true},{"mn":"stria","it":"strega, fattucchiera","_new":true},{"mn":"striùn","it":"istrione, guaritore, ciarlatano","_new":true},{"mn":"tànanüü","it":"tonto, sciocco","_new":true},{"mn":"tanaca","it":"sciocco, tanghero","_new":true},{"mn":"tànardu","it":"tanghero, zuccone","_new":true},{"mn":"téstàfìna","it":"persona intelligente e colta","_new":true},{"mn":"téstanégra","it":"capinera","_new":true},{"mn":"téstardu","it":"testardo, caparbio","_new":true},{"mn":"téstùn","it":"zuccone, cocciuto","_new":true},{"mn":"tùntuna","it":"donna stupida","_new":true},{"mn":"tùrèlu","it":"torello, giovane aitante e robusto","_new":true},{"mn":"zùlu","it":"persona sporca e ignorante","_new":true},{"mn":"zighiribissu","it":"capriccio","_new":true},{"mn":"abadin","it":"lastra d'ardesia per coprire i tetti","_new":true},{"mn":"abain","it":"lucernario","_new":true},{"mn":"arbanèla","it":"contenitore di coccio per salare le acciughe","_new":true},{"mn":"arbascüa","it":"scuro per finestra","_new":true},{"mn":"arbiu","it":"trogolo, mangiatoia in pietra","_new":true},{"mn":"brùchéta","it":"bulletta, borchia per scarponi","_new":true},{"mn":"bùsséa","it":"bussola, orientamento","_new":true},{"mn":"bùssèlu","it":"bozzello, carrucola multipla","_new":true},{"mn":"corba","it":"gerla tronco-piramidale di castagno","_new":true},{"mn":"cùpu","it":"coppo, tegola ricurva","_new":true},{"mn":"cigniela","it":"mattonella di cotto","_new":true},{"mn":"ciapa","it":"lastra di ardesia per tetti, marmo, pietra","_new":true},{"mn":"ciapùn","it":"lastrone, grossa pietra","_new":true},{"mn":"curezin","it":"laccioli, liste da intrecciare","_new":true},{"mn":"crüata","it":"cravatta","_new":true},{"mn":"crévé","it":"coprire","_new":true},{"mn":"crévilétu","it":"copriletto","_new":true},{"mn":"cüréza","it":"cinghia, cintura dei pantaloni","_new":true},{"mn":"létu","it":"letto","_new":true},{"mn":"listèlu","it":"listello","_new":true},{"mn":"lümetu","it":"lumicino a olio","_new":true},{"mn":"lümin","it":"stoppino, lumicino, lume da cimitero","_new":true},{"mn":"mancina","it":"gru a mano","_new":true},{"mn":"mòla","it":"molla","_new":true},{"mn":"mògiua","it":"molle per camino","_new":true},{"mn":"prédéé","it":"sassolino, ciottolo","_new":true},{"mn":"punciotu","it":"cuneo d'acciaio per spaccare la pietra","_new":true},{"mn":"sàpa","it":"zappa","_new":true},{"mn":"sàpéé","it":"scalino abbozzato con la zappa","_new":true},{"mn":"sarvadin","it":"paletto di sostegno dei tralci di vite","_new":true},{"mn":"sàrzu","it":"salice di canale; legaccio di pollone","_new":true},{"mn":"sergente","it":"morsetto da falegname","_new":true},{"mn":"sésta","it":"cesta","_new":true},{"mn":"séstu","it":"sagoma, modello","_new":true},{"mn":"strigu","it":"lastricato, pavimento rustico","_new":true},{"mn":"stüfa","it":"stufa, cucina a legna","_new":true},{"mn":"stùpa","it":"stoppa, canapa","_new":true},{"mn":"stùpin","it":"stoppino, lucignolo","_new":true},{"mn":"tàcada","it":"incastellatura di travi di legno","_new":true},{"mn":"tàchina","it":"va via!","_new":true},{"mn":"tagiéa","it":"cuneo di ferro per spaccare la legna","_new":true},{"mn":"tagié","it":"tagliere","_new":true},{"mn":"térazila","it":"argilla","_new":true},{"mn":"téragna","it":"ragnatela","_new":true},{"mn":"téragia","it":"terraglia, vasellame di coccio","_new":true},{"mn":"tén","it":"terreno, podere, possedimento","_new":true},{"mn":"térina","it":"casseruola di coccio","_new":true},{"mn":"téstu","it":"disco in terracotta per cottura focacce","_new":true},{"mn":"téstùn","it":"mazza a spigoli vivi per sbozzare le pietre","_new":true},{"mn":"tézua","it":"forbice","_new":true},{"mn":"tézuà","it":"forbiciata","_new":true},{"mn":"tiabüsùn","it":"cavatappi","_new":true},{"mn":"tüméta","it":"mattonella, piastrella","_new":true},{"mn":"turchinétu","it":"blu di Prussia, colorante per il bucato","_new":true},{"mn":"vencu","it":"legaccio di pollone di salice","_new":true},{"mn":"vìduu","it":"germoglio, tralcio novello","_new":true},{"mn":"vìnticìti","it":"venti centesimi; cosa di poco valore","_new":true},{"mn":"véruu","it":"trivella, trapano a mano","_new":true},{"mn":"zgùrbia","it":"sgorbia, scalpello ricurvo per l'olivo","_new":true},{"mn":"ziabéchìn","it":"trapano manuale","_new":true},{"mn":"zina","it":"capruggine, scanalatura delle doghe","_new":true},{"mn":"zvìngëta","it":"vitone per tirare i fondi alla botte","_new":true},{"mn":"aigua","it":"acqua","_new":true},{"mn":"brúduzu","it":"molto liquido","_new":true},{"mn":"brüscuaa","it":"iniziare a piovere","_new":true},{"mn":"bruscuinaa","it":"piovigginare","_new":true},{"mn":"briscuu","it":"pioggerellina","_new":true},{"mn":"burfa","it":"sgradevole alitata; vampata di calore","_new":true},{"mn":"bùriana","it":"burrasca di vento, trambusto","_new":true},{"mn":"burlézümu","it":"maretta, agitazione del mare","_new":true},{"mn":"bùrasca","it":"burrasca","_new":true},{"mn":"bùrascada","it":"temporale","_new":true},{"mn":"délüviu","it":"diluvio","_new":true},{"mn":"délüviaa","it":"piovere a dirotto","_new":true},{"mn":"éstada","it":"estate","_new":true},{"mn":"fréduada","it":"malattia da raffreddamento","_new":true},{"mn":"frédüa","it":"freddura; tempo rigido","_new":true},{"mn":"fréscüa","it":"frescura, clima fresco e ventilato","_new":true},{"mn":"fréscümu","it":"frescume, odore nauseante","_new":true},{"mn":"frévaa","it":"febbraio","_new":true},{"mn":"lünanquinta","it":"luna nuova o scura","_new":true},{"mn":"lünaciéna","it":"plenilunio","_new":true},{"mn":"lünédi","it":"lunedì","_new":true},{"mn":"lùnacalanté","it":"luna calante","_new":true},{"mn":"térsana","it":"febbre terzana","_new":true},{"mn":"tempu","it":"tempo, stagione, ora","_new":true},{"mn":"tempumolu","it":"tempo uggioso e piovviginoso","_new":true},{"mn":"tùrsa d'aigua","it":"acquazzone","_new":true},{"mn":"vénardì","it":"venerdì","_new":true},{"mn":"vèrnëngu","it":"invernale; luogo tristo, esposto a tramontana","_new":true},{"mn":"vèrsa","it":"rovescio, acquazzone","_new":true},{"mn":"acapunaa","it":"accapponare, avere la pelle d'oca","_new":true},{"mn":"àbusaa","it":"far buon viso a cattiva sorte","_new":true},{"mn":"àburtii","it":"abortire, non andare a buon fine","_new":true},{"mn":"àbéraa","it":"afferrare, agguantare","_new":true},{"mn":"àbrancaa","it":"abbrancare, afferrare con forza","_new":true},{"mn":"ambrucaa","it":"cogliere sul fatto, incontrare casualmente","_new":true},{"mn":"ambrugiaa","it":"dar fastidio, mettere disordine","_new":true},{"mn":"arabatasé","it":"ingegnarsi, sbarcare il lunario","_new":true},{"mn":"aranpinasé","it":"arrampicarsi","_new":true},{"mn":"arangiasé","it":"arrangiarsi, districarsi, accordarsi","_new":true},{"mn":"brunduaa","it":"brontolare, mugugnare","_new":true},{"mn":"brùscaa","it":"spruzzare acqua","_new":true},{"mn":"brustulii","it":"torrefare, abbrustolire","_new":true},{"mn":"büaciaa","it":"bere smoderatamente","_new":true},{"mn":"büzaraa","it":"mandare in malora, rovinare","_new":true},{"mn":"cataa","it":"comprare, raccogliere","_new":true},{"mn":"ciapaa","it":"prendere, acciuffare, buscare","_new":true},{"mn":"ciapàsé","it":"accapigliarsi","_new":true},{"mn":"cìamaa","it":"chiamare; chiedere il prezzo di una cosa","_new":true},{"mn":"ciantaa","it":"piantare, conficcare; smettere","_new":true},{"mn":"cùrumpé","it":"corrompere","_new":true},{"mn":"faaspécié","it":"meravigliare, stupire","_new":true},{"mn":"faaventu","it":"soffiare, sventagliare","_new":true},{"mn":"faaunésciu","it":"celiare, scherzare","_new":true},{"mn":"faamaa","it":"dolere","_new":true},{"mn":"faa dér brau","it":"fare l'esibizionista","_new":true},{"mn":"frégaa","it":"imbrogliare, rubare; strofinare","_new":true},{"mn":"frégügiaa","it":"sfrugugliare, sfregare","_new":true},{"mn":"lümaa","it":"guardare con attenzione e insistenza","_new":true},{"mn":"mémaa","it":"vedere, scrutare","_new":true},{"mn":"prénutaa","it":"prenotare, fissare","_new":true},{"mn":"prénsipiaa","it":"iniziare, cominciare","_new":true},{"mn":"premüzaa","it":"bromeggiare, pasturare per la pesca","_new":true},{"mn":"primézaa","it":"primeggiare, eccellere","_new":true},{"mn":"régüaa","it":"rotolare, capitombolare","_new":true},{"mn":"réménaa","it":"rivoltare, rigirare, ripetere","_new":true},{"mn":"rémésciaa","it":"rimestare; agitarsi del mare","_new":true},{"mn":"rémüdaa","it":"trapiantare, travasare","_new":true},{"mn":"rémundaa","it":"sfrondare, potare, ripulire le piante","_new":true},{"mn":"rénvégnii","it":"rinvenire, ammorbidire","_new":true},{"mn":"sansügaa","it":"masticare senza deglutire","_new":true},{"mn":"sàmpétaa","it":"sgambettare, calpestare lasciando impronte","_new":true},{"mn":"strüssaa","it":"strozzare, andare di traverso","_new":true},{"mn":"stùcaa","it":"spezzare, rompere","_new":true},{"mn":"stüciaa","it":"imbrogliare, fregare","_new":true},{"mn":"stürbédii","it":"intorbidire","_new":true},{"mn":"stüségaa","it":"stuzzicare, provocare","_new":true},{"mn":"tàcaa","it":"iniziare, attaccare, cominciare","_new":true},{"mn":"tagiaa","it":"tagliare, abbattere, disboscare","_new":true},{"mn":"tachinaa","it":"camminare velocemente","_new":true},{"mn":"tànfaa","it":"puzzare","_new":true},{"mn":"tiaa","it":"tirare, tendere, lanciare, attrarre","_new":true},{"mn":"tiaasü","it":"edificare; allevare; sollevare; sorbire","_new":true},{"mn":"tiaadélüngu","it":"proseguire senza fermarsi","_new":true},{"mn":"tùmbaa","it":"cadere, precipitare; percuotere","_new":true},{"mn":"tùndé","it":"tosare","_new":true},{"mn":"tùrsaa","it":"mettere a bagno, ammollare, inzuppare","_new":true},{"mn":"vincii","it":"riempire, colmare","_new":true},{"mn":"vrësébën","it":"amarsi","_new":true},{"mn":"abilé","it":"prestante, capace, valido","_new":true},{"mn":"àbruzu","it":"acerbo","_new":true},{"mn":"abucà","it":"amabile, gradevole (di vino)","_new":true},{"mn":"acagnassà","it":"impigrito, impoltrito","_new":true},{"mn":"amau","it":"amaro","_new":true},{"mn":"àmodu","it":"serio, educato, per bene","_new":true},{"mn":"àmortu","it":"spento","_new":true},{"mn":"brüza","it":"bruciato, arso","_new":true},{"mn":"bùgiardu","it":"bugiardo","_new":true},{"mn":"bùgiardùn","it":"grande bugiardo","_new":true},{"mn":"brütu","it":"brutto, sporco","_new":true},{"mn":"cùrmu","it":"colmo, pieno, sommità","_new":true},{"mn":"cùrtëzé","it":"gentile, cortese","_new":true},{"mn":"cürtu","it":"breve, corto","_new":true},{"mn":"cùrvu","it":"curvo, incurvato","_new":true},{"mn":"éstanèlu","it":"primaverile","_new":true},{"mn":"fadiguzu","it":"faticoso","_new":true},{"mn":"fàmaciuzu","it":"affamato","_new":true},{"mn":"facilé","it":"facile, semplice","_new":true},{"mn":"fredu","it":"freddo, gelido","_new":true},{"mn":"fréscu","it":"fresco","_new":true},{"mn":"lìzu","it":"logoro, mal cotto","_new":true},{"mn":"licu","it":"stupido","_new":true},{"mn":"lìsciu","it":"liscio, spianato, levigato","_new":true},{"mn":"lòfiu","it":"molle, sgonfio, smidollato","_new":true},{"mn":"lüngu","it":"lungo","_new":true},{"mn":"malignuzu","it":"geloso, invidioso","_new":true},{"mn":"màluu","it":"malore","_new":true},{"mn":"mézugramu","it":"cagionevole, malaticcio","_new":true},{"mn":"mìzéu","it":"misero, stretto, povero","_new":true},{"mn":"mòlu","it":"molle, floscio, indolente","_new":true},{"mn":"prézènté","it":"presente; (anche) regalino","_new":true},{"mn":"présciuzu","it":"prezioso","_new":true},{"mn":"préputénté","it":"prepotente, violento","_new":true},{"mn":"préstuidu","it":"mattiniero","_new":true},{"mn":"pulitu","it":"pulito, lindo","_new":true},{"mn":"puntü","it":"puntuto, appuntito","_new":true},{"mn":"réngiu","it":"rigido, stecchito, bloccato","_new":true},{"mn":"rénumà","it":"rinomato, famoso","_new":true},{"mn":"restìu","it":"restio, indeciso, ritroso","_new":true},{"mn":"san","it":"sano, santo","_new":true},{"mn":"sasiu","it":"sazio, satollo","_new":true},{"mn":"sarvadégu","it":"selvatico, rozzo","_new":true},{"mn":"sàrvativu","it":"durevole, di facile conservazione","_new":true},{"mn":"ségüu","it":"certo, sicuro","_new":true},{"mn":"sémprìcé","it":"semplice","_new":true},{"mn":"sénciu","it":"singolo","_new":true},{"mn":"strétu","it":"stretto, striminzito","_new":true},{"mn":"stüfu","it":"stufo, annoiato, nauseato","_new":true},{"mn":"tàgiéntu","it":"tagliente, affilato","_new":true},{"mn":"tütu","it":"tutto","_new":true},{"mn":"turchin","it":"turchino, azzurro","_new":true},{"mn":"tündu","it":"rotondo, tondo; piatto piano","_new":true},{"mn":"vena","it":"screziato, fessurato, crepato","_new":true},{"mn":"véitu","it":"vuoto, cavo","_new":true},{"mn":"vèu","it":"vero, schietto","_new":true},{"mn":"vézin","it":"vicino, accanto","_new":true},{"mn":"zvapurà","it":"evaporato","_new":true}];
+//VOCABOLARIO_END
+
+// ── Stato ─────────────────────────────────────────────────────────────────
+let dati = JSON.parse(JSON.stringify(VOCABOLARIO)); // copia modificabile
+
+function updateStats() {
+  const modified = dati.filter((e,i) => {
+    const o = VOCABOLARIO[i];
+    return o && (e.mn!==o.mn || e.it!==o.it);
+  }).length;
+  const nuovi = dati.filter(e=>e._new).length;
+  const elTotal = document.getElementById('stat-total');
+  const elMod = document.getElementById('stat-modified');
+  const elNew = document.getElementById('stat-new');
+  const elReset = document.getElementById('btn-reset');
+  if(elTotal) elTotal.textContent = dati.length;
+  if(elMod) elMod.textContent = modified;
+  if(elNew) elNew.textContent = nuovi;
+  if(elReset) elReset.style.display = (modified>0||nuovi>0) ? '' : 'none';
+}
+
+// ── TTS ───────────────────────────────────────────────────────────────────
+// Hardening per bug Chrome/Android (cancel + speak immediato perde l'utterance,
+// e su Android la voce di default può non essere italiana).
+let _voicesReady = false;
+function _initVoices(){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.getVoices();
+  if('onvoiceschanged' in window.speechSynthesis){
+    window.speechSynthesis.onvoiceschanged = ()=>{ _voicesReady = true; };
+  }
+  _voicesReady = window.speechSynthesis.getVoices().length > 0;
+}
+_initVoices();
+
+function _pickItVoice(){
+  const voices = window.speechSynthesis.getVoices();
+  if(!voices.length) return null;
+  return voices.find(v => v.lang === 'it-IT')
+      || voices.find(v => (v.lang||'').toLowerCase().startsWith('it'))
+      || null;
+}
+
+function speak(testo, btnEl) {
+  if(!testo){ if(btnEl)btnEl.classList.remove('playing'); return; }
+  if(!window.speechSynthesis){alert("Sintesi vocale non supportata");return;}
+  window.speechSynthesis.cancel();
+  document.querySelectorAll('.btn-play').forEach(b=>b.classList.remove('playing'));
+  if(btnEl)btnEl.classList.add('playing');
+  // Bug Chrome/Android: serve un tick fra cancel() e speak()
+  setTimeout(()=>{
+    const u=new SpeechSynthesisUtterance(testo);
+    u.lang='it-IT'; u.rate=0.82;
+    const v=_pickItVoice(); if(v) u.voice=v;
+    u.onend  =()=>{if(btnEl)btnEl.classList.remove('playing');};
+    u.onerror=()=>{if(btnEl)btnEl.classList.remove('playing');};
+    window.speechSynthesis.speak(u);
+  }, 80);
+}
+
+// Letto dal bottone 🔊 di una singola card: legge SOLO la parola dialettale
+function speakCard(btnEl) {
+  const card = btnEl.closest('.word-card');
+  if(!card) return;
+  const pronEl = card.querySelector('.pron-input');
+  const mnEl   = card.querySelector('.mn-input');
+  const testo = (pronEl && pronEl.value) || (mnEl && mnEl.value) || '';
+  speak(testo, btnEl);
+}
+
+function speakAll() {
+  const cards=document.querySelectorAll('.word-card');
+  if(!cards.length)return;
+  window.speechSynthesis.cancel();
+  let i=0;
+  function next(){
+    if(i>=cards.length)return;
+    const idx=parseInt(cards[i].dataset.idx);
+    const e=dati[idx];
+    const btn=cards[i].querySelector('.btn-play');
+    cards[i].scrollIntoView({behavior:'smooth',block:'center'});
+    document.querySelectorAll('.btn-play').forEach(b=>b.classList.remove('playing'));
+    if(btn)btn.classList.add('playing');
+    const testo = e.pron || e.mn || '';
+    if(!testo){ if(btn)btn.classList.remove('playing'); i++; next(); return; }
+    setTimeout(()=>{
+      const u=new SpeechSynthesisUtterance(testo);
+      u.lang='it-IT'; u.rate=0.78;
+      const v=_pickItVoice(); if(v) u.voice=v;
+      u.onend  =()=>{if(btn)btn.classList.remove('playing');i++;next();};
+      u.onerror=()=>{if(btn)btn.classList.remove('playing');i++;next();};
+      window.speechSynthesis.speak(u);
+    }, 80);
+  }
+  next();
+}
+
+// ── Modifica inline ───────────────────────────────────────────────────────
+function onEdit(idx, field, value) {
+  dati[idx][field]=value;
+  const card=document.querySelector(`[data-idx="${idx}"]`);
+  if(card){
+    const orig=VOCABOLARIO[idx];
+    const isModified=orig&&(dati[idx].mn!==orig.mn||dati[idx].it!==orig.it);
+    card.classList.toggle('modified', isModified&&!dati[idx]._new);
+  }
+  updateStats();
+}
+
+function deleteEntry(idx) {
+  if(!confirm('Eliminare questa voce?'))return;
+  dati.splice(idx,1);
+  build(currentFilter);
+}
+
+function resetAll() {
+  if(!confirm('Ripristinare tutte le modifiche? Le voci nuove verranno eliminate.'))return;
+  dati=JSON.parse(JSON.stringify(VOCABOLARIO));
+  build('');
+  document.getElementById('search').value='';
+}
+
+// ── Aggiunta nuova voce ───────────────────────────────────────────────────
+function aggiungi() {
+  const mn=document.getElementById('new-mn').value.trim();
+  const it=document.getElementById('new-it').value.trim();
+  const pron=document.getElementById('new-pron').value.trim();
+  if(!mn||!it){alert('Inserisci almeno la voce manarolese e la traduzione italiana.');return;}
+  dati.push({mn,it,pron:pron||mn,_new:true});
+  dati.sort((a,b)=>a.mn.localeCompare(b.mn,'it'));
+  document.getElementById('new-mn').value='';
+  document.getElementById('new-it').value='';
+  document.getElementById('new-pron').value='';
+  build(currentFilter);
+  updateStats();
+}
+
+// ── Salva file aggiornato ─────────────────────────────────────────────────
+// Configurazione GitHub (puoi modificare questi valori se cambi repo/branch)
+const GH_OWNER  = 'farmaciadellastazione-tech';
+const GH_REPO   = 'dizionari';
+const GH_BRANCH = 'main';
+const GH_PATH   = 'dizionario_manarolese.html';
+const GH_TOKEN_KEY = 'gh_pat_dizionari'; // chiave localStorage
+
+// Legge i campi correnti dal DOM e ricostruisce l'HTML aggiornato
+// IMPORTANTE: catturiamo il sorgente HTML una volta sola, all'avvio della pagina,
+// quando il DOM è ancora pulito (bottone non in stato "Salvataggio...", ecc.).
+// Lo useremo come TEMPLATE per ricostruisciHtml() invece di leggere il DOM live,
+// che cambierebbe ad ogni salvataggio creando feedback loop.
+let _ORIG_HTML = null;
+async function _caricaTemplateOriginale() {
+  try {
+    // Scarica il file originale dalla stessa URL della pagina, bypassando la cache
+    const res = await fetch(window.location.href + '?_=' + Date.now(), { cache: 'no-store' });
+    if (res.ok) _ORIG_HTML = await res.text();
+  } catch(e) { console.warn('Caricamento template originale fallito:', e); }
+}
+// Avviamo subito (in parallelo, non blocca)
+_caricaTemplateOriginale();
+
+function ricostruisciHtml() {
+  document.querySelectorAll('.word-card').forEach(card=>{
+    const idx=parseInt(card.dataset.idx);
+    const mnEl=card.querySelector('.mn-input');
+    const itEl=card.querySelector('.it-input');
+    const pronEl=card.querySelector('.pron-input');
+    if(mnEl)dati[idx].mn=mnEl.value;
+    if(itEl)dati[idx].it=itEl.value;
+    if(pronEl)dati[idx].pron=pronEl.value;
+  });
+
+  const datiPuliti=dati.map(e=>{const o={mn:e.mn,it:e.it};if(e.pron&&e.pron!==e.mn)o.pron=e.pron;if(e._new)o._new=true;return o;});
+  const nuoviDati=JSON.stringify(datiPuliti);
+
+  // Usiamo SEMPRE il template originale catturato all'avvio, mai il DOM corrente.
+  // Se per qualche motivo non è ancora caricato, falliamo invece di rovinare il file.
+  if (!_ORIG_HTML) {
+    throw new Error('Template originale non ancora caricato. Aspetta qualche secondo e riprova.');
+  }
+  const src = _ORIG_HTML;
+  const start=src.indexOf('//VOCABOLARIO_START');
+  const end=src.indexOf('//VOCABOLARIO_END');
+  if(start<0||end<0){throw new Error('Marcatori VOCABOLARIO_START/END non trovati nel template');}
+
+  return src.slice(0,start)+'//VOCABOLARIO_START\nconst VOCABOLARIO = '+nuoviDati+';\n'+src.slice(end);
+}
+
+// Salva su disco (download nel browser)
+function salvaFile() {
+  let newSrc;
+  try { newSrc = ricostruisciHtml(); }
+  catch(e){ alert('Errore: '+e.message); return; }
+
+  const blob=new Blob([newSrc],{type:'text/html;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='dizionario_manarolese.html';
+  a.click();
+}
+
+// Salva direttamente su GitHub via API
+// Helper: fetch con timeout (default 15s). Senza questo, una richiesta che
+// non risponde per qualunque motivo resterebbe in pending all'infinito.
+function fetchTimeout(url, opts, ms){
+  ms = ms || 15000;
+  const ctrl = new AbortController();
+  const tid = setTimeout(()=>ctrl.abort('timeout'), ms);
+  return fetch(url, Object.assign({}, opts, { signal: ctrl.signal }))
+    .finally(()=>clearTimeout(tid));
+}
+
+async function salvaSuGitHub() {
+  let token = localStorage.getItem(GH_TOKEN_KEY);
+  if(!token){
+    token = prompt('Incolla qui il tuo Personal Access Token GitHub (verrà salvato nel browser, nessuno lo vedrà se non chi usa questo PC):');
+    if(!token) return;
+    token = token.trim();
+    if(!token.startsWith('github_pat_') && !token.startsWith('ghp_')){
+      if(!confirm('Il token non sembra avere il formato GitHub atteso. Continuo lo stesso?')) return;
+    }
+    localStorage.setItem(GH_TOKEN_KEY, token);
+  }
+
+  const btn = document.getElementById('btn-gh-save');
+  const origText = btn ? btn.textContent : '';
+  if(btn){ btn.disabled = true; btn.textContent = '⏳ Salvataggio...'; }
+
+  // Timeout di sicurezza: qualunque cosa accada, dopo 90s il bottone torna disponibile
+  // Questo previene il "blocco infinito" anche in caso di errori imprevisti
+  const safetyTid = setTimeout(()=>{
+    if(btn && btn.disabled){
+      console.warn('[GH] Safety timeout 90s - sblocco il bottone');
+      btn.disabled = false;
+      btn.textContent = origText;
+    }
+  }, 90000);
+
+  console.log('[GH] Inizio salvataggio. Token formato:', token.slice(0,15)+'...', 'lunghezza:', token.length);
+
+  const apiBase = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`;
+  const headers = {
+    'Authorization': 'Bearer '+token,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+
+  try {
+    let newSrc = ricostruisciHtml();
+    console.log('[GH] HTML ricostruito, lunghezza:', newSrc.length);
+
+    // STEP 1: GET con timeout per recuperare SHA del file esistente
+    console.log('[GH] STEP 1: GET', apiBase);
+    let getRes;
+    try {
+      getRes = await fetchTimeout(apiBase+'?ref='+GH_BRANCH, { headers }, 15000);
+    } catch(e){
+      if(e.name === 'AbortError' || e === 'timeout'){
+        throw new Error('TIMEOUT su GET: la richiesta a GitHub non ha risposto in 15 secondi. Probabile blocco di rete (firewall/proxy/antivirus).');
+      }
+      throw new Error('Errore di rete su GET: '+(e.message||e));
+    }
+    console.log('[GH] STEP 1 risposta:', getRes.status, getRes.statusText);
+
+    let sha = null;
+    if(getRes.ok){
+      const meta = await getRes.json();
+      sha = meta.sha;
+      console.log('[GH] SHA corrente:', sha);
+    } else if(getRes.status === 404){
+      console.log('[GH] File non esiste ancora (404), sarà creato');
+    } else {
+      const errTxt = await getRes.text();
+      if(getRes.status === 401){
+        if(confirm('Token rifiutato da GitHub (401 Unauthorized). Cancello il token salvato per riprovare con uno nuovo?')){
+          localStorage.removeItem(GH_TOKEN_KEY);
+        }
+      }
+      throw new Error('GET fallito ('+getRes.status+'): '+errTxt);
+    }
+
+    // STEP 2: codifica base64 (TextEncoder per gestire unicode)
+    const bytes = new TextEncoder().encode(newSrc);
+    let bin=''; for(let i=0;i<bytes.length;i++) bin += String.fromCharCode(bytes[i]);
+    const b64 = btoa(bin);
+    console.log('[GH] STEP 2: contenuto codificato, base64 length:', b64.length);
+
+    const putBody = {
+      message: 'Aggiornamento dizionario manarolese da web ('+new Date().toISOString().slice(0,19).replace('T',' ')+')',
+      content: b64,
+      branch: GH_BRANCH
+    };
+    if(sha) putBody.sha = sha;
+
+    // STEP 3: PUT con timeout (più lungo perché upload di ~400 KB)
+    console.log('[GH] STEP 3: PUT', apiBase);
+    let putRes;
+    try {
+      putRes = await fetchTimeout(apiBase, {
+        method: 'PUT',
+        headers: Object.assign({}, headers, {'Content-Type':'application/json'}),
+        body: JSON.stringify(putBody)
+      }, 30000);
+    } catch(e){
+      if(e.name === 'AbortError' || e === 'timeout'){
+        throw new Error('TIMEOUT su PUT: la scrittura su GitHub non ha risposto in 30 secondi. Probabile blocco firewall/proxy.');
+      }
+      throw new Error('Errore di rete su PUT: '+(e.message||e));
+    }
+    console.log('[GH] STEP 3 risposta:', putRes.status, putRes.statusText);
+
+    if(!putRes.ok){
+      const errTxt = await putRes.text();
+      if(putRes.status === 401){
+        if(confirm('Token rifiutato da GitHub (401). Cancello il token salvato?')){
+          localStorage.removeItem(GH_TOKEN_KEY);
+        }
+      }
+      throw new Error('PUT fallito ('+putRes.status+'): '+errTxt);
+    }
+
+    console.log('[GH] ✅ Salvataggio completato');
+    clearTimeout(safetyTid);
+    if(btn){ btn.textContent = '✅ Salvato!'; setTimeout(()=>{ btn.textContent=origText; btn.disabled=false; }, 2500); }
+  } catch(err) {
+    console.error('[GH] Errore:', err);
+    clearTimeout(safetyTid);
+    alert('Errore salvataggio:\n\n'+err.message);
+    if(btn){ btn.textContent=origText; btn.disabled=false; }
+  }
+}
+
+// Pulisce il token (utile se il PAT scade o cambia)
+function reimpostaToken(){
+  if(confirm('Cancellare il token GitHub salvato in questo browser?\nDovrai reincollarlo al prossimo salvataggio.')){
+    localStorage.removeItem(GH_TOKEN_KEY);
+    alert('Token rimosso.');
+  }
+}
+
+// ── Rendering ─────────────────────────────────────────────────────────────
+let currentFilter='';
+
+function build(filter) {
+  currentFilter=filter||'';
+  const q=(filter||'').toLowerCase().trim();
+  
+  const filtered=dati.map((e,i)=>({e,i})).filter(({e})=>
+    !q||(e.mn.toLowerCase().includes(q)||e.it.toLowerCase().includes(q))
+  );
+  
+  const main=document.getElementById('main');
+  
+  if(!filtered.length){
+    main.innerHTML=`
+      <div class="add-form">
+        <h3>➕ Aggiungi nuova voce</h3>
+        <div class="row">
+          <input id="new-mn" placeholder="Voce manarolese" autocomplete="off">
+          <input id="new-it" placeholder="Traduzione italiana" autocomplete="off">
+          <input id="new-pron" placeholder="Pronuncia TTS (opzionale)" autocomplete="off">
+          <button class="btn btn-blue" onclick="aggiungi()">Aggiungi</button>
+        </div>
+      </div>
+      <div class="no-results">Nessun risultato trovato ⚓</div>`;
+    document.getElementById('count').textContent='0 voci';
+    updateStats();
+    return;
+  }
+  
+  // Raggruppa per lettera
+  const groups={};
+  filtered.forEach(({e,i})=>{
+    const l=e.mn[0].toUpperCase();
+    if(!groups[l])groups[l]=[];
+    groups[l].push({e,i});
+  });
+  const letters=Object.keys(groups).sort();
+  
+  // Alpha nav
+  document.getElementById('alphaNav').innerHTML=letters.map(l=>
+    `<a class="alpha-btn" href="#letter-${l}">${l}</a>`
+  ).join('');
+  
+  const statsHtml=`
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-val" id="stat-total">${dati.length}</span><span class="stat-lbl">Voci totali</span></div>
+      <div class="stat"><span class="stat-val" id="stat-modified">0</span><span class="stat-lbl">Modificate</span></div>
+      <div class="stat"><span class="stat-val" id="stat-new">0</span><span class="stat-lbl">Nuove</span></div>
+    </div>
+    <div class="info-bar">
+      <strong>✏️ Come usare:</strong>
+      Clicca su qualsiasi campo per modificarlo. Usa "Aggiungi nuova voce" per inserire parole mancanti. Quando hai finito clicca <strong>☁️ Salva su GitHub</strong> per pubblicare le modifiche online (visibili da tutti i tuoi computer). <strong>💾 Scarica copia</strong> serve solo per un backup locale.
+    </div>
+    <div class="add-form">
+      <h3>➕ Aggiungi nuova voce</h3>
+      <div class="row">
+        <input id="new-mn" placeholder="Voce manarolese" autocomplete="off">
+        <input id="new-it" placeholder="Traduzione italiana" autocomplete="off">
+        <input id="new-pron" placeholder="Pronuncia TTS (opzionale)" autocomplete="off">
+        <button class="btn btn-blue" onclick="aggiungi()">Aggiungi</button>
+      </div>
+    </div>`;
+  
+  const cardsHtml=letters.map(l=>`
+    <div class="letter-section" id="letter-${l}">
+      <div class="letter-heading">${l} <span>${groups[l].length}</span></div>
+      ${groups[l].map(({e,i})=>{
+        const orig=VOCABOLARIO[i];
+        const isModified=orig&&(e.mn!==orig.mn||e.it!==orig.it)&&!e._new;
+        return `
+        <div class="word-card ${isModified?'modified':''} ${e._new?'is-new':''}" data-idx="${i}">
+          <div class="field-wrap">
+            <span class="field-label">Manarolese ${e._new?'🆕':''}</span>
+            <input class="field-input mn-input" type="text" value="${e.mn.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+              title="Clicca per modificare" onchange="onEdit(${i},'mn',this.value)" onfocus="this.select()">
+          </div>
+          <div>
+            <div class="field-wrap" style="margin-bottom:3px">
+              <span class="field-label">Italiano</span>
+              <input class="field-input it-field it-input" type="text" value="${e.it.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+                title="Clicca per modificare" onchange="onEdit(${i},'it',this.value)" onfocus="this.select()">
+            </div>
+            <div class="field-wrap">
+              <span class="field-label">Pronuncia TTS</span>
+              <input class="field-input pron-field pron-input" type="text" value="${(e.pron||e.mn).replace(/"/g,'&quot;').replace(/'/g,'&#39;')}"
+                title="Correzione fonetica per la lettura" onchange="onEdit(${i},'pron',this.value)" onfocus="this.select()">
+            </div>
+          </div>
+          <div class="card-right">
+            <button class="btn-play" onclick="speakCard(this)" title="Pronuncia">🔊</button>
+            <button class="btn-del" onclick="deleteEntry(${i})" title="Elimina voce">🗑</button>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+  
+  main.innerHTML=statsHtml+cardsHtml;
+  document.getElementById('count').textContent=`${filtered.length} voci`;
+  updateStats();
+}
+
+function filtra(){build(document.getElementById('search').value);}
+
+// Init
+build('');
+</script>
+</body>
+</html>
